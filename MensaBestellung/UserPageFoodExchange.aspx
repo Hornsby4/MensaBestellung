@@ -4,7 +4,7 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
-    <link href="userStyle.css" rel="stylesheet" type="text/css"/>
+    <link href="generalStyle.css" rel="stylesheet" type="text/css"/>
     <title></title>
 </head>
 <body>
@@ -33,6 +33,5 @@
     <div class="PageContent">
             
     </div>
-    </form>
     </form>
 </html>

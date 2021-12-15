@@ -4,7 +4,7 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
-    <link href="userStyle.css" rel="stylesheet" type="text/css"/>
+    <link href="generalStyle.css" rel="stylesheet" type="text/css"/>
     <title></title>
 </head>
 <body>
@@ -38,8 +38,6 @@
         <asp:Button class="Button" ID="btn_close" runat="server" Text="Beenden" />
     </div>
     <div class="PageContent">
-            
     </div>
     </form>
-
 </html>

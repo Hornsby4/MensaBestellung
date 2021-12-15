@@ -71,7 +71,6 @@
     <Content Include="generalStyle.css" />
     <Content Include="UserPage.aspx" />
     <Content Include="UserPageFoodExchange.aspx" />
-    <Content Include="userStyle.css" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
