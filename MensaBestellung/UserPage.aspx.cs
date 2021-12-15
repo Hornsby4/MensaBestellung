@@ -13,5 +13,15 @@ namespace MensaBestellung
         {
 
         }
+
+        protected void btn_buyMoreFood_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("UserPageFoodExchange.aspx");
+        }
+
+        protected void btn_goToAdminPage_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("AdminPage.aspx");
+        }
     }
 }

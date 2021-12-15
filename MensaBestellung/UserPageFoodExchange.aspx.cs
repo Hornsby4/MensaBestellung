@@ -13,5 +13,10 @@ namespace MensaBestellung
         {
 
         }
+
+        protected void btn_goBack_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("UserPage.aspx");
+        }
     }
 }
