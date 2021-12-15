@@ -1,0 +1,25 @@
+﻿.Button {
+    width:145px;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    padding: 5px;
+    font-size: 12px;
+}
+
+.Navigation {
+    position: absolute;
+    text-align: center;
+    width: 160px;
+    left: 10px;
+    top: 70px;
+    bottom: 70px;
+}
+
+.PageContent {
+    position: absolute;
+    left: 170px;
+    top: 70px;
+    bottom: 70px;
+    right: 10px;
+}
+

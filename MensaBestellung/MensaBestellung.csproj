@@ -69,6 +69,9 @@
   <ItemGroup>
     <Content Include="AdminPage.aspx" />
     <Content Include="generalStyle.css" />
+    <Content Include="UserPage.aspx" />
+    <Content Include="UserPageFoodExchange.aspx" />
+    <Content Include="userStyle.css" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
@@ -80,6 +83,20 @@
       <DependentUpon>AdminPage.aspx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="UserPage.aspx.cs">
+      <DependentUpon>UserPage.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="UserPage.aspx.designer.cs">
+      <DependentUpon>UserPage.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="UserPageFoodExchange.aspx.cs">
+      <DependentUpon>UserPageFoodExchange.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="UserPageFoodExchange.aspx.designer.cs">
+      <DependentUpon>UserPageFoodExchange.aspx</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
