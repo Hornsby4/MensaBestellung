@@ -11,7 +11,8 @@ namespace MensaBestellung
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            lbl_menu1Monday.Text = "Schnitzel";
+            lbl_sideDishMonday.Text = "haojdo";
         }
 
         protected void btn_buyMoreFood_Click(object sender, EventArgs e)
