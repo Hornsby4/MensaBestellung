@@ -26,7 +26,17 @@ CREATE TABLE IF NOT EXISTS `dish` (
   PRIMARY KEY (`dish_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci COMMENT='Table for different dishes';
 
--- Daten Export vom Benutzer nicht ausgewählt
+-- Exportiere Daten aus Tabelle 5ahwii_mensa3.dish: ~0 rows (ungefähr)
+DELETE FROM `dish`;
+/*!40000 ALTER TABLE `dish` DISABLE KEYS */;
+INSERT INTO `dish` (`dish_id`, `description`) VALUES
+	(0, 'Obst'),
+	(1, 'Putencurry mit Reis'),
+	(2, 'Topfen-Reis-Auflauf mit Fruchtsauce'),
+	(3, 'Zwiebelrostbraten (Rind) mit Spätzle'),
+	(4, 'Rindsgulasch mit Spätzle'),
+	(5, 'Marmeladepalatschinken');
+/*!40000 ALTER TABLE `dish` ENABLE KEYS */;
 
 -- Exportiere Struktur von Tabelle 5ahwii_mensa3.menu
 DROP TABLE IF EXISTS `menu`;
@@ -45,7 +55,16 @@ CREATE TABLE IF NOT EXISTS `menu` (
   CONSTRAINT `FK_menu_dish_3` FOREIGN KEY (`mainDish2`) REFERENCES `dish` (`dish_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci COMMENT='Table for a full menu per day';
 
--- Daten Export vom Benutzer nicht ausgewählt
+-- Exportiere Daten aus Tabelle 5ahwii_mensa3.menu: ~0 rows (ungefähr)
+DELETE FROM `menu`;
+/*!40000 ALTER TABLE `menu` DISABLE KEYS */;
+INSERT INTO `menu` (`date`, `sideDish`, `mainDish1`, `mainDish2`, `mensaOpen`) VALUES
+	('2021-12-13', 0, 1, 2, b'1'),
+	('2021-12-14', 0, 1, 3, b'1'),
+	('2021-12-15', 0, 2, 3, b'0'),
+	('2021-12-16', NULL, NULL, NULL, b'0'),
+	('2021-12-17', 0, 5, NULL, b'1');
+/*!40000 ALTER TABLE `menu` ENABLE KEYS */;
 
 -- Exportiere Struktur von Tabelle 5ahwii_mensa3.permission
 DROP TABLE IF EXISTS `permission`;
@@ -55,7 +74,14 @@ CREATE TABLE IF NOT EXISTS `permission` (
   PRIMARY KEY (`permission_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci COMMENT='Table showing permission level';
 
--- Daten Export vom Benutzer nicht ausgewählt
+-- Exportiere Daten aus Tabelle 5ahwii_mensa3.permission: ~0 rows (ungefähr)
+DELETE FROM `permission`;
+/*!40000 ALTER TABLE `permission` DISABLE KEYS */;
+INSERT INTO `permission` (`permission_id`, `description`) VALUES
+	(0, 'guest'),
+	(1, 'user'),
+	(2, 'admin');
+/*!40000 ALTER TABLE `permission` ENABLE KEYS */;
 
 -- Exportiere Struktur von Tabelle 5ahwii_mensa3.user
 DROP TABLE IF EXISTS `user`;
@@ -70,7 +96,14 @@ CREATE TABLE IF NOT EXISTS `user` (
   CONSTRAINT `FK_user_permission` FOREIGN KEY (`permission_id`) REFERENCES `permission` (`permission_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci COMMENT='Table for users';
 
--- Daten Export vom Benutzer nicht ausgewählt
+-- Exportiere Daten aus Tabelle 5ahwii_mensa3.user: ~0 rows (ungefähr)
+DELETE FROM `user`;
+/*!40000 ALTER TABLE `user` DISABLE KEYS */;
+INSERT INTO `user` (`user_id`, `firstName`, `lastName`, `email`, `permission_id`) VALUES
+	(0, 'susi', 'sorglos', 'susi.sorglos@example.com', 0),
+	(1, 'max', 'mustermann', 'max.mustermann@example.com', 1),
+	(2, 'rudi', 'ratlos', 'rudi.ratlos@example.com', 2);
+/*!40000 ALTER TABLE `user` ENABLE KEYS */;
 
 -- Exportiere Struktur von Tabelle 5ahwii_mensa3.user_orders_menu
 DROP TABLE IF EXISTS `user_orders_menu`;
@@ -85,7 +118,14 @@ CREATE TABLE IF NOT EXISTS `user_orders_menu` (
   CONSTRAINT `FK_user_orders_menu_user` FOREIGN KEY (`user_id`) REFERENCES `user` (`user_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci COMMENT='filling table for n-n connection menu-user';
 
--- Daten Export vom Benutzer nicht ausgewählt
+-- Exportiere Daten aus Tabelle 5ahwii_mensa3.user_orders_menu: ~0 rows (ungefähr)
+DELETE FROM `user_orders_menu`;
+/*!40000 ALTER TABLE `user_orders_menu` DISABLE KEYS */;
+INSERT INTO `user_orders_menu` (`date`, `user_id`, `foodExchange`) VALUES
+	('2021-12-16', 1, b'0'),
+	('2021-12-17', 1, b'0'),
+	('2021-12-17', 2, b'1');
+/*!40000 ALTER TABLE `user_orders_menu` ENABLE KEYS */;
 
 /*!40101 SET SQL_MODE=IFNULL(@OLD_SQL_MODE, '') */;
 /*!40014 SET FOREIGN_KEY_CHECKS=IFNULL(@OLD_FOREIGN_KEY_CHECKS, 1) */;
