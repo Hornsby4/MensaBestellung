@@ -53,7 +53,6 @@ table.tableMenu tr, table.tableMenu th, table.tableMenu td {
     border: none;
 }
 
-
 .TableHeaders {
     text-align: center;
     background-color: lightcoral;
@@ -70,5 +69,27 @@ table.tableMenu tr, table.tableMenu th, table.tableMenu td {
 
 .TableContent {
     text-align: center;
+}
 
+.RegistrationHeader {
+    background-color: lightcoral;
+    position: absolute;
+    height: 60px;
+    top: 0px;
+    left: 0px;
+    right: 0px;
+    text-align: center;
+    font-size: 50px;
+}
+
+.RegistrationContent {
+    margin: auto;
+    width: 60%;
+    padding: 10px;
+    font-size: 20px;
+    text-align:center;
+    top:70px;
+}
+
+.RegistrationTable{
 }

@@ -50,10 +50,10 @@
     <div class="PageContent">
             <table class="generalTable">
             <tr>
-                <th class="auto-style1">Datum</th>
-                <th class="auto-style2">Essen nachkaufen</th>
-                <th class="auto-style3">Menü</th>
-                <th class="auto-style4">Anbieter</th>
+                <th class="TableHeaders">Datum</th>
+                <th class="TableHeaders">Essen nachkaufen</th>
+                <th class="TableHeaders">Menü</th>
+                <th class="TableHeaders">Anbieter</th>
                 
             </tr>
             <tr>

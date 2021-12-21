@@ -83,12 +83,12 @@
     <div class="PageContent">
         <table class="generalTable">
             <tr>
-                <th class="auto-style1">Datum</th>
-                <th class="auto-style2">Essen bestellt</th>
-                <th class="auto-style3">In Essensbörse anbieten</th>
-                <th class="auto-style4">Menü</th>
-                <th class="auto-style7">Preis</th>
-                <th class="auto-style8">Essensbörse</th>
+                <th class="TableHeaders">Datum</th>
+                <th class="TableHeaders">Essen bestellt</th>
+                <th class="TableHeaders">In Essensbörse anbieten</th>
+                <th class="TableHeaders">Menü</th>
+                <th class="TableHeaders">Preis</th>
+                <th class="TableHeaders">Essensbörse</th>
             </tr>
             <tr >
                 <td> 
