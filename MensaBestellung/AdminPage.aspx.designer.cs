@@ -60,13 +60,13 @@ namespace MensaBestellung
         protected global::System.Web.UI.WebControls.Button btn_lastWeek;
 
         /// <summary>
-        /// btn_saveOrder control.
+        /// btn_saveChanges control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btn_saveOrder;
+        protected global::System.Web.UI.WebControls.Button btn_saveChanges;
 
         /// <summary>
         /// btn_throwAwayChanges control.
@@ -103,5 +103,50 @@ namespace MensaBestellung
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button btn_close;
+
+        /// <summary>
+        /// CheckBox_monday control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.CheckBox CheckBox_monday;
+
+        /// <summary>
+        /// CheckBox_tuesday control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.CheckBox CheckBox_tuesday;
+
+        /// <summary>
+        /// CheckBox_wednesday control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.CheckBox CheckBox_wednesday;
+
+        /// <summary>
+        /// CheckBox_thursday control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.CheckBox CheckBox_thursday;
+
+        /// <summary>
+        /// CheckBox_friday control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.CheckBox CheckBox_friday;
     }
 }

@@ -52,3 +52,23 @@ table.generalTable tr, table.generalTable th, table.generalTable td  {
 table.tableMenu tr, table.tableMenu th, table.tableMenu td {
     border: none;
 }
+
+
+.TableHeaders {
+    text-align: center;
+    background-color: lightcoral;
+}
+
+.CheckBox{
+    text-align: center;
+}
+
+.TableClass {
+    text-align: center;
+    background-color: lightgray;
+}
+
+.TableContent {
+    text-align: center;
+
+}
