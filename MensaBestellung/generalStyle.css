@@ -30,3 +30,23 @@
     bottom: 34px;
     right: 10px;
 }
+
+
+.TableHeaders {
+    text-align: center;
+    background-color: lightcoral;
+}
+
+.CheckBox{
+    text-align: center;
+}
+
+.TableClass {
+    text-align: center;
+    background-color: lightgray;
+}
+
+.TableContent {
+    text-align: center;
+
+}
