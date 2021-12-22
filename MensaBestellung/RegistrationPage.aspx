@@ -13,11 +13,7 @@
              <asp:Label ID="lbl_RegistrationHeaderFormat" runat="server" Text="ANMELDUNG"></asp:Label>
         </header>
     <div class="RegistrationContent">
-        <table class="RegistrationTable">
-            <tr>
-                <td><asp:Label ID="lbl_registrationFirstname" runat="server" Text="Vorname: "></asp:Label></td>
-                <td><asp:TextBox ID="txt_registrationFirstname" runat="server"></asp:TextBox></td>
-            </tr>
+        <table align="center">
             <tr>
                 <td><asp:Label ID="lbl_registrationLastname" runat="server" Text="Nachname: "></asp:Label></td>
                 <td><asp:TextBox ID="txt_registrationLastName" runat="server"></asp:TextBox></td>
@@ -27,7 +23,7 @@
                 <td><asp:TextBox ID="txt_userEmail" runat="server"></asp:TextBox></td>
             </tr>
         </table>
-        <asp:Button ID="btn_saveUse" runat="server" Text="Speichern" />
+        <asp:Button ID="btn_saveUse" runat="server" Text="Speichern" Height="34px" Width="113px" />
     </div> 
     </form>
 </body>

@@ -83,13 +83,10 @@ table.tableMenu tr, table.tableMenu th, table.tableMenu td {
 }
 
 .RegistrationContent {
-    margin: auto;
     width: 60%;
-    padding: 10px;
-    font-size: 20px;
-    text-align:center;
-    top:70px;
+    padding: 70px;
+    margin: auto;
+    font-size: 25px;
+    text-align: center;
 }
 
-.RegistrationTable{
-}
