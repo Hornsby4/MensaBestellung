@@ -57,7 +57,7 @@
 </body>
     <div class ="auto-style9">
         <br />
-        <img src="https://www.kmh-gmbh.at/fileadmin/kmh/LINKS/htl.png" width:"50px" style="height: 100px; width: 159px">
+        <img src="/resources/htl.png" width:"50px" style="height: 100px; width: 159px">
         <br />
         <asp:Label ID="lbl_Header" runat="server" Text="Menüs bestellen" Font-Size="Large" ForeColor="White"></asp:Label>
         <br />

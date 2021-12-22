@@ -35,6 +35,8 @@ CREATE TABLE IF NOT EXISTS `menu` (
   `sideDish` int DEFAULT NULL,
   `mainDish1` int DEFAULT NULL,
   `mainDish2` int DEFAULT NULL,
+  `price` double DEFAULT NULL,
+  `foodExchangeOpen` datetime DEFAULT NULL,
   `mensaOpen` bit(1) NOT NULL,
   PRIMARY KEY (`date`),
   KEY `FK_menu_dish` (`sideDish`),

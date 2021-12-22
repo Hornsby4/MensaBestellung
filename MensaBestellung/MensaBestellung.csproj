@@ -70,6 +70,7 @@
     <Content Include="AdminPage.aspx" />
     <Content Include="generalStyle.css" />
     <Content Include="RegistrationPage.aspx" />
+    <Content Include="resources\htl.png" />
     <Content Include="UserPage.aspx" />
     <Content Include="UserPageFoodExchange.aspx" />
     <Content Include="Web.config" />
@@ -113,6 +114,12 @@
     <None Include="Web.Release.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\DataBaseWrapper\DataBaseWrapper.csproj">
+      <Project>{173256b5-3433-4b0d-954b-df127a307f96}</Project>
+      <Name>DataBaseWrapper</Name>
+    </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
