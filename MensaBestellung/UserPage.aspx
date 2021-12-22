@@ -69,16 +69,16 @@
         <br />
         <asp:Button class="Button" ID="btn_lastWeek" runat="server" Text="Vorherige Woche" />
         <br />
-        <asp:Button class="Button" ID="btn_saveOrder" runat="server" Text="Bestellungen speichern" BackColor="#00CC66" />
+        <asp:Button class="Button" ID="btn_saveOrder" runat="server" Text="Bestellungen speichern" BackColor="#00CC66" OnClick="btn_saveOrder_Click" />
         <br />
         <asp:Button class="Button" ID="btn_throwAwayChanges" runat="server" Text="Änderungen verwerfen"/>
         <br />
         <asp:Button class="Button" ID="btn_buyMoreFood" runat="server" Text="Essen nachkaufen" OnClick="btn_buyMoreFood_Click" />
         <br />
         <br />
-        <asp:Button class="Button" ID="btn_goToAdminPage" runat="server" Text="Zur Administration" OnClick="btn_goToAdminPage_Click" />
+        <asp:Button class="Button" ID="btn_goToAdminPage" runat="server" Text="Zur Administration" OnClick="btn_goToAdminPage_Click" Visible="False" />
         <br />
-        <asp:Button class="Button" ID="btn_close" runat="server" Text="Beenden" />
+        <asp:Button class="Button" ID="btn_close" runat="server" Text="Beenden" OnClick="btn_close_Click" />
     </div>
     <div class="PageContent">
         <table class="generalTable">
@@ -286,6 +286,7 @@
                 </td>
            </tr>
         </table>
+        <asp:Label runat="server" ID="lbl_Info" ForeColor="Red"></asp:Label>
     </div>
     </form>
 </html>

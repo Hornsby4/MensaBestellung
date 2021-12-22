@@ -42,13 +42,13 @@ namespace MensaBestellung
         protected global::System.Web.UI.WebControls.Label lbl_signInLastname;
 
         /// <summary>
-        /// txt_signInLastName control.
+        /// txt_lastName control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txt_signInLastName;
+        protected global::System.Web.UI.WebControls.TextBox txt_lastName;
 
         /// <summary>
         /// lbl_userEmail control.
@@ -69,12 +69,48 @@ namespace MensaBestellung
         protected global::System.Web.UI.WebControls.TextBox txt_userEmail;
 
         /// <summary>
-        /// btn_saveUse control.
+        /// btn_signInUser control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btn_saveUse;
+        protected global::System.Web.UI.WebControls.Button btn_signInUser;
+
+        /// <summary>
+        /// lbl_Info control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lbl_Info;
+
+        /// <summary>
+        /// reqFldVal_lastname control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator reqFldVal_lastname;
+
+        /// <summary>
+        /// reqFldVal_Email control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator reqFldVal_Email;
+
+        /// <summary>
+        /// regexVal_Email control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RegularExpressionValidator regexVal_Email;
     }
 }

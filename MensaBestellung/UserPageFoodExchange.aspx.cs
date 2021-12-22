@@ -11,7 +11,6 @@ namespace MensaBestellung
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-
         }
 
         protected void btn_goBack_Click(object sender, EventArgs e)

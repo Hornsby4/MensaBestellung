@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Linq;
+using System.Text;
 using System.Web;
 using System.Web.Configuration;
 using System.Web.UI;
@@ -20,9 +21,18 @@ namespace MensaBestellung
         {
             try
             {
+                if (!Page.IsPostBack)
+                {
+                    btn_goToAdminPage.Visible = false;
+                }
+                string username = DesignName(User.Identity.Name);
+                lbl_name.Text = username;
+
                 db = new DataBase(connStrg);
                 db.Open();
                 db.Close();
+
+                AllowAdminPage(username);
 
                 DateTime currentWeekMonday = DateTime.Now.StartOfWeek(DayOfWeek.Monday);
                 //DataTable dt = db.RunQuery("SELECT * FROM menu WHERE dateOfDay BETWEEN '2021-12-13' AND '2021-12-17'");
@@ -40,10 +50,33 @@ namespace MensaBestellung
             }
             catch (Exception ex)
             {
-                //lblInfo.Text = ex.Message; //TODO info lable
+                lbl_Info.Text = ex.Message;
                 return;
             }
 
+        }
+
+
+        private string DesignName(string name)
+        {
+            StringBuilder sb = new StringBuilder();
+            foreach (string s in name.Split(' '))
+            {
+                if (s.Length > 0)
+                {
+                    sb.Append(s.Substring(0, 1).ToUpper() + s.Substring(1) + " ");
+                }
+            }
+            return sb.ToString();
+        }
+
+        private void AllowAdminPage(string username)
+        {
+            int permission = Convert.ToInt32(Session["Permission"]);
+            if(permission == 2)
+            {
+                btn_goToAdminPage.Visible = true;
+            }
         }
 
         protected void btn_buyMoreFood_Click(object sender, EventArgs e)
@@ -54,6 +87,10 @@ namespace MensaBestellung
         protected void btn_goToAdminPage_Click(object sender, EventArgs e)
         {
             Response.Redirect("AdminPage.aspx");
+        }
+
+        protected void btn_saveOrder_Click(object sender, EventArgs e)
+        {
         }
     }
 }
