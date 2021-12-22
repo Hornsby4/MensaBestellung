@@ -71,7 +71,7 @@ table.tableMenu tr, table.tableMenu th, table.tableMenu td {
     text-align: center;
 }
 
-.RegistrationHeader {
+.SignInHeader {
     background-color: lightcoral;
     position: absolute;
     height: 60px;
@@ -82,7 +82,7 @@ table.tableMenu tr, table.tableMenu th, table.tableMenu td {
     font-size: 50px;
 }
 
-.RegistrationContent {
+.SignInContent {
     width: 60%;
     padding: 70px;
     margin: auto;
