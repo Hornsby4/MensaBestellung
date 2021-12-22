@@ -24,49 +24,31 @@ namespace MensaBestellung
         protected global::System.Web.UI.HtmlControls.HtmlForm form1;
 
         /// <summary>
-        /// lbl_RegistrationHeaderFormat control.
+        /// lbl_SignInHeaderFormat control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lbl_RegistrationHeaderFormat;
+        protected global::System.Web.UI.WebControls.Label lbl_SignInHeaderFormat;
 
         /// <summary>
-        /// lbl_registrationFirstname control.
+        /// lbl_signInLastname control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lbl_registrationFirstname;
+        protected global::System.Web.UI.WebControls.Label lbl_signInLastname;
 
         /// <summary>
-        /// txt_registrationFirstname control.
+        /// txt_signInLastName control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txt_registrationFirstname;
-
-        /// <summary>
-        /// lbl_registrationLastname control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lbl_registrationLastname;
-
-        /// <summary>
-        /// txt_registrationLastName control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txt_registrationLastName;
+        protected global::System.Web.UI.WebControls.TextBox txt_signInLastName;
 
         /// <summary>
         /// lbl_userEmail control.
