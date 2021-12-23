@@ -102,15 +102,15 @@
                 <td class="auto-style46">ΣMenüs in Essensbörse</td>
                 <td class="auto-style46">Menüs</td>
                 <td class="auto-style46">Preis</td>
-                <td class="auto-style47">Essensbörse</td>
+                <td class="auto-style47">Essensbörse Schlussdatum</td>
                 <td class="auto-style46">Zum Löschen
                     <br />
                     freigeben</td>
             </tr>
             <tr>
-                <td class="auto-style31" headers="Datum;Bestellete"></td>
-                <td class="auto-style32"></td>
-                <td class="auto-style33"></td>
+                <td class="auto-style31" headers="Datum;Bestellete">27.12.2021</td>
+                <td class="auto-style32">2</td>
+                <td class="auto-style33">2</td>
                 <td class="auto-style34">
                     <br />
                 </td>
