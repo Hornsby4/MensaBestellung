@@ -42,6 +42,12 @@
             top: 0px;
             background-color: indianred;
         }
+        .auto-style10 {
+            width: 170px;
+        }
+        .auto-style11 {
+            height: 26px;
+        }
     </style>
 </head>
 <body>
@@ -75,15 +81,14 @@
         <asp:Button class="Button" ID="btn_close" runat="server" Text="Beenden" />
     </div>
     <div class="PageContent">
-        <div class="table">
-        <table>
+        <table class="generalTable">
             <tr>
-                <th class="auto-style1">Datum</th>
-                <th class="auto-style2">Essen bestellt</th>
-                <th class="auto-style3">In Essensbörse anbieten</th>
-                <th class="auto-style4">Menü</th>
-                <th class="auto-style7">Preis</th>
-                <th class="auto-style8">Essensbörse</th>
+                <th class="TableHeaders">Datum</th>
+                <th class="TableHeaders">Essen bestellt</th>
+                <th class="TableHeaders">In Essensbörse anbieten</th>
+                <th class="TableHeaders">Menü</th>
+                <th class="TableHeaders">Preis</th>
+                <th class="TableHeaders">Essensbörse</th>
             </tr>
             <tr >
                 <td> 
@@ -215,8 +220,8 @@
                 <td>
                     <table class="tableMenu">
                         <tr>
-                            <td>Beilage: </td>
-                            <td>
+                            <td class="auto-style11">Beilage: </td>
+                            <td class="auto-style11">
                                 <asp:Label ID="lbl_sideDishThursday" runat="server"></asp:Label>
                             </td>
                         </tr>
@@ -255,19 +260,19 @@
                     <table class="tableMenu">
                         <tr>
                             <td>Beilage: </td>
-                            <td>
+                            <td class="auto-style10">
                                 <asp:Label ID="lbl_sideDishFriday" runat="server"></asp:Label>
                             </td>
                         </tr>
                         <tr>
                             <td>Menü 1: </td>
-                            <td>
+                            <td class="auto-style10">
                                 <asp:Label ID="lbl_menu1Friday" runat="server"></asp:Label>
                             </td>
                         </tr>
                         <tr>
                             <td>Menü 2: </td>
-                            <td>
+                            <td class="auto-style10">
                                 <asp:Label ID="lbl_menu2Friday" runat="server"></asp:Label>
                             </td>
                         </tr>
@@ -281,7 +286,6 @@
                 </td>
            </tr>
         </table>
-        </div>
     </div>
     </form>
 </html>

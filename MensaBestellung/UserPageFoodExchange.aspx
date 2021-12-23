@@ -19,6 +19,9 @@
         .auto-style4 {
             width: 173px;
         }
+        .auto-style5 {
+            height: 25px;
+        }
     </style>
 </head>
 <body>
@@ -45,13 +48,12 @@
         <asp:Button class="Button" ID="btn_goBack" runat="server" Text="Zurück" OnClick="btn_goBack_Click" />
     </div>
     <div class="PageContent">
-            <div class="table">
-        <table>
+            <table class="generalTable">
             <tr>
-                <th class="auto-style1">Datum</th>
-                <th class="auto-style2">Essen nachkaufen</th>
-                <th class="auto-style3">Menü</th>
-                <th class="auto-style4">Anbieter</th>
+                <th class="TableHeaders">Datum</th>
+                <th class="TableHeaders">Essen nachkaufen</th>
+                <th class="TableHeaders">Menü</th>
+                <th class="TableHeaders">Anbieter</th>
                 
             </tr>
             <tr>
@@ -62,7 +64,7 @@
                     <asp:CheckBox ID="chkBox_buyExchangeFood" runat="server" />
                 </td>
                 <td class="auto-style3"> 
-                    <table>
+                    <table class="tableMenu">
                         <tr>
                             <td>Beilage: </td>
                             <td>
@@ -70,8 +72,8 @@
                             </td>
                         </tr>
                         <tr>
-                            <td>Menü 1: </td>
-                            <td>
+                            <td class="auto-style5">Menü 1: </td>
+                            <td class="auto-style5">
                                 <asp:Label ID="lbl_menu1" runat="server"></asp:Label>
                             </td>
                         </tr>
