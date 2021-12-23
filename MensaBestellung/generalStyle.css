@@ -1,7 +1,4 @@
-﻿body {
-}
-
-.Button {
+﻿.Button {
     width: 160px;
     margin-top: 5px;
     margin-bottom: 5px;
@@ -71,7 +68,7 @@ table.tableMenu tr, table.tableMenu th, table.tableMenu td {
     text-align: center;
 }
 
-.RegistrationHeader {
+.SignInHeader {
     background-color: lightcoral;
     position: absolute;
     height: 60px;
@@ -82,14 +79,11 @@ table.tableMenu tr, table.tableMenu th, table.tableMenu td {
     font-size: 50px;
 }
 
-.RegistrationContent {
-    margin: auto;
+.SignInContent {
     width: 60%;
-    padding: 10px;
-    font-size: 20px;
-    text-align:center;
-    top:70px;
+    padding: 70px;
+    margin: auto;
+    font-size: 25px;
+    text-align: center;
 }
 
-.RegistrationTable{
-}

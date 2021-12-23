@@ -26,7 +26,7 @@ CREATE TABLE IF NOT EXISTS `dish` (
   PRIMARY KEY (`dish_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci COMMENT='Table for different dishes';
 
--- Exportiere Daten aus Tabelle 5ahwii_mensa3.dish: ~0 rows (ungefähr)
+-- Exportiere Daten aus Tabelle 5ahwii_mensa3.dish: ~6 rows (ungefähr)
 DELETE FROM `dish`;
 /*!40000 ALTER TABLE `dish` DISABLE KEYS */;
 INSERT INTO `dish` (`dish_id`, `description`) VALUES
@@ -45,6 +45,8 @@ CREATE TABLE IF NOT EXISTS `menu` (
   `sideDish` int DEFAULT NULL,
   `mainDish1` int DEFAULT NULL,
   `mainDish2` int DEFAULT NULL,
+  `price` double DEFAULT NULL,
+  `foodExchangeOpen` datetime DEFAULT NULL,
   `mensaOpen` bit(1) NOT NULL,
   PRIMARY KEY (`date`),
   KEY `FK_menu_dish` (`sideDish`),
@@ -55,15 +57,15 @@ CREATE TABLE IF NOT EXISTS `menu` (
   CONSTRAINT `FK_menu_dish_3` FOREIGN KEY (`mainDish2`) REFERENCES `dish` (`dish_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci COMMENT='Table for a full menu per day';
 
--- Exportiere Daten aus Tabelle 5ahwii_mensa3.menu: ~0 rows (ungefähr)
+-- Exportiere Daten aus Tabelle 5ahwii_mensa3.menu: ~5 rows (ungefähr)
 DELETE FROM `menu`;
 /*!40000 ALTER TABLE `menu` DISABLE KEYS */;
-INSERT INTO `menu` (`date`, `sideDish`, `mainDish1`, `mainDish2`, `mensaOpen`) VALUES
-	('2021-12-13', 0, 1, 2, b'1'),
-	('2021-12-14', 0, 1, 3, b'1'),
-	('2021-12-15', 0, 2, 3, b'0'),
-	('2021-12-16', NULL, NULL, NULL, b'0'),
-	('2021-12-17', 0, 5, NULL, b'1');
+INSERT INTO `menu` (`date`, `sideDish`, `mainDish1`, `mainDish2`, `price`, `foodExchangeOpen`, `mensaOpen`) VALUES
+	('2021-12-13', 0, 1, 2, 5.6, '2021-12-13 13:30:00', b'1'),
+	('2021-12-14', 0, 1, 3, 5.6, '2021-12-14 13:30:00', b'1'),
+	('2021-12-15', 0, 2, 3, 5.6, NULL, b'0'),
+	('2021-12-16', NULL, NULL, NULL, NULL, '2021-12-16 13:30:00', b'0'),
+	('2021-12-17', 0, 5, NULL, 5.6, '2021-12-17 13:30:00', b'1');
 /*!40000 ALTER TABLE `menu` ENABLE KEYS */;
 
 -- Exportiere Struktur von Tabelle 5ahwii_mensa3.permission
@@ -74,7 +76,7 @@ CREATE TABLE IF NOT EXISTS `permission` (
   PRIMARY KEY (`permission_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci COMMENT='Table showing permission level';
 
--- Exportiere Daten aus Tabelle 5ahwii_mensa3.permission: ~0 rows (ungefähr)
+-- Exportiere Daten aus Tabelle 5ahwii_mensa3.permission: ~3 rows (ungefähr)
 DELETE FROM `permission`;
 /*!40000 ALTER TABLE `permission` DISABLE KEYS */;
 INSERT INTO `permission` (`permission_id`, `description`) VALUES
@@ -96,7 +98,7 @@ CREATE TABLE IF NOT EXISTS `user` (
   CONSTRAINT `FK_user_permission` FOREIGN KEY (`permission_id`) REFERENCES `permission` (`permission_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci COMMENT='Table for users';
 
--- Exportiere Daten aus Tabelle 5ahwii_mensa3.user: ~0 rows (ungefähr)
+-- Exportiere Daten aus Tabelle 5ahwii_mensa3.user: ~3 rows (ungefähr)
 DELETE FROM `user`;
 /*!40000 ALTER TABLE `user` DISABLE KEYS */;
 INSERT INTO `user` (`user_id`, `firstName`, `lastName`, `email`, `permission_id`) VALUES
@@ -118,7 +120,7 @@ CREATE TABLE IF NOT EXISTS `user_orders_menu` (
   CONSTRAINT `FK_user_orders_menu_user` FOREIGN KEY (`user_id`) REFERENCES `user` (`user_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci COMMENT='filling table for n-n connection menu-user';
 
--- Exportiere Daten aus Tabelle 5ahwii_mensa3.user_orders_menu: ~0 rows (ungefähr)
+-- Exportiere Daten aus Tabelle 5ahwii_mensa3.user_orders_menu: ~3 rows (ungefähr)
 DELETE FROM `user_orders_menu`;
 /*!40000 ALTER TABLE `user_orders_menu` DISABLE KEYS */;
 INSERT INTO `user_orders_menu` (`date`, `user_id`, `foodExchange`) VALUES

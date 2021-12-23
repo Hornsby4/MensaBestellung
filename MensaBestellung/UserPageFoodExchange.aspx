@@ -30,7 +30,7 @@
 </body>
     <div class ="Navigation">
         <br />
-        <img src="https://www.kmh-gmbh.at/fileadmin/kmh/LINKS/htl.png" width:"50px" style="height: 100px; width: 159px">
+        <img src="/resources/htl.png" width:"50px" style="height: 100px; width: 159px">
         <br />
         <asp:Label ID="Label1" runat="server" Font-Size="Large" ForeColor="White" Text="Essensbörse"></asp:Label>
         <br />

@@ -73,7 +73,8 @@
   <ItemGroup>
     <Content Include="AdminPage_Overview.aspx" />
     <Content Include="generalStyle.css" />
-    <Content Include="RegistrationPage.aspx" />
+    <Content Include="resources\htl.png" />
+    <Content Include="SignIn.aspx" />
     <Content Include="UserPage.aspx" />
     <Content Include="UserPageFoodExchange.aspx" />
     <Content Include="Web.config" />
@@ -87,12 +88,12 @@
       <DependentUpon>AdminPage_Overview.aspx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="RegistrationPage.aspx.cs">
-      <DependentUpon>RegistrationPage.aspx</DependentUpon>
+    <Compile Include="SignIn.aspx.cs">
+      <DependentUpon>SignIn.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="RegistrationPage.aspx.designer.cs">
-      <DependentUpon>RegistrationPage.aspx</DependentUpon>
+    <Compile Include="SignIn.aspx.designer.cs">
+      <DependentUpon>SignIn.aspx</DependentUpon>
     </Compile>
     <Compile Include="UserPage.aspx.cs">
       <DependentUpon>UserPage.aspx</DependentUpon>
@@ -117,6 +118,12 @@
     <None Include="Web.Release.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\DataBaseWrapper\DataBaseWrapper.csproj">
+      <Project>{173256b5-3433-4b0d-954b-df127a307f96}</Project>
+      <Name>DataBaseWrapper</Name>
+    </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
