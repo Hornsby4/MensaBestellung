@@ -112,10 +112,12 @@
                 <td class="auto-style32">2</td>
                 <td class="auto-style33">2</td>
                 <td class="auto-style34">
+                    Suppe<br />
+                    Schnitzel<br />
                     <br />
                 </td>
-                <td class="auto-style35"></td>
-                <td class="auto-style48"></td>
+                <td class="auto-style35">€5,60</td>
+                <td class="auto-style48">18.01.2022</td>
                 <td class="auto-style37">
                     <asp:CheckBox ID="CheckBox_monday" runat="server" />
                 </td>
