@@ -41,14 +41,14 @@ INSERT INTO `dish` (`dish_id`, `description`) VALUES
 -- Exportiere Struktur von Tabelle 5ahwii_mensa3.menu
 DROP TABLE IF EXISTS `menu`;
 CREATE TABLE IF NOT EXISTS `menu` (
-  `date` date NOT NULL,
+  `dateOfDay` date NOT NULL,
   `sideDish` int DEFAULT NULL,
   `mainDish1` int DEFAULT NULL,
   `mainDish2` int DEFAULT NULL,
   `price` double DEFAULT NULL,
   `foodExchangeOpen` datetime DEFAULT NULL,
   `mensaOpen` bit(1) NOT NULL,
-  PRIMARY KEY (`date`),
+  PRIMARY KEY (`dateOfDay`) USING BTREE,
   KEY `FK_menu_dish` (`sideDish`),
   KEY `FK_menu_dish_2` (`mainDish1`),
   KEY `FK_menu_dish_3` (`mainDish2`),
@@ -60,7 +60,7 @@ CREATE TABLE IF NOT EXISTS `menu` (
 -- Exportiere Daten aus Tabelle 5ahwii_mensa3.menu: ~5 rows (ungefähr)
 DELETE FROM `menu`;
 /*!40000 ALTER TABLE `menu` DISABLE KEYS */;
-INSERT INTO `menu` (`date`, `sideDish`, `mainDish1`, `mainDish2`, `price`, `foodExchangeOpen`, `mensaOpen`) VALUES
+INSERT INTO `menu` (`dateOfDay`, `sideDish`, `mainDish1`, `mainDish2`, `price`, `foodExchangeOpen`, `mensaOpen`) VALUES
 	('2021-12-13', 0, 1, 2, 5.6, '2021-12-13 13:30:00', b'1'),
 	('2021-12-14', 0, 1, 3, 5.6, '2021-12-14 13:30:00', b'1'),
 	('2021-12-15', 0, 2, 3, 5.6, NULL, b'0'),
@@ -80,7 +80,7 @@ CREATE TABLE IF NOT EXISTS `permission` (
 DELETE FROM `permission`;
 /*!40000 ALTER TABLE `permission` DISABLE KEYS */;
 INSERT INTO `permission` (`permission_id`, `description`) VALUES
-	(0, 'guest'),
+	(0, 'inactive'),
 	(1, 'user'),
 	(2, 'admin');
 /*!40000 ALTER TABLE `permission` ENABLE KEYS */;
@@ -94,6 +94,7 @@ CREATE TABLE IF NOT EXISTS `user` (
   `email` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
   `permission_id` int NOT NULL,
   PRIMARY KEY (`user_id`),
+  UNIQUE KEY `email` (`email`),
   KEY `FK_user_permission` (`permission_id`),
   CONSTRAINT `FK_user_permission` FOREIGN KEY (`permission_id`) REFERENCES `permission` (`permission_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci COMMENT='Table for users';
@@ -110,20 +111,20 @@ INSERT INTO `user` (`user_id`, `firstName`, `lastName`, `email`, `permission_id`
 -- Exportiere Struktur von Tabelle 5ahwii_mensa3.user_orders_menu
 DROP TABLE IF EXISTS `user_orders_menu`;
 CREATE TABLE IF NOT EXISTS `user_orders_menu` (
-  `date` date NOT NULL,
+  `dateOfDay` date NOT NULL,
   `user_id` int NOT NULL,
   `foodExchange` bit(1) NOT NULL,
-  PRIMARY KEY (`date`,`user_id`),
-  KEY `FK_user_oders_menu_menu` (`date`),
+  PRIMARY KEY (`dateOfDay`,`user_id`) USING BTREE,
   KEY `FK_user_orders_menu_user` (`user_id`),
-  CONSTRAINT `FK_user_orders_menu_menu` FOREIGN KEY (`date`) REFERENCES `menu` (`date`),
+  KEY `FK_user_oders_menu_menu` (`dateOfDay`) USING BTREE,
+  CONSTRAINT `FK_user_orders_menu_menu` FOREIGN KEY (`dateOfDay`) REFERENCES `menu` (`dateOfDay`),
   CONSTRAINT `FK_user_orders_menu_user` FOREIGN KEY (`user_id`) REFERENCES `user` (`user_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci COMMENT='filling table for n-n connection menu-user';
 
 -- Exportiere Daten aus Tabelle 5ahwii_mensa3.user_orders_menu: ~3 rows (ungefähr)
 DELETE FROM `user_orders_menu`;
 /*!40000 ALTER TABLE `user_orders_menu` DISABLE KEYS */;
-INSERT INTO `user_orders_menu` (`date`, `user_id`, `foodExchange`) VALUES
+INSERT INTO `user_orders_menu` (`dateOfDay`, `user_id`, `foodExchange`) VALUES
 	('2021-12-16', 1, b'0'),
 	('2021-12-17', 1, b'0'),
 	('2021-12-17', 2, b'1');

@@ -22,12 +22,15 @@
         .auto-style5 {
             height: 25px;
         }
+        .auto-style6 {
+            text-align: center;
+            background-color: lightcoral;
+            width: 173px;
+        }
     </style>
 </head>
 <body>
     <form id="form1" runat="server">
-        
-</body>
     <div class ="Navigation">
         <br />
         <img src="/resources/htl.png" width:"50px" style="height: 100px; width: 159px">
@@ -53,7 +56,7 @@
                 <th class="TableHeaders">Datum</th>
                 <th class="TableHeaders">Essen nachkaufen</th>
                 <th class="TableHeaders">Menü</th>
-                <th class="TableHeaders">Anbieter</th>
+                <th class="auto-style6">Anbieter</th>
                 
             </tr>
             <tr>
@@ -92,7 +95,34 @@
                 </td>
            </tr>
         </table>
-        </div>
+        <br />
+        <br />
+        <br />
+            <br />
+            <br />
+        <asp:GridView ID="gv_foodExchange" runat="server" CellPadding="4" ForeColor="#333333" Width="838px" AutoGenerateColumns="False">
+            <AlternatingRowStyle BackColor="White" />
+            <Columns>
+                <asp:BoundField DataField="dateOfDay" HeaderText="dateOfDay" />
+                <asp:templatefield HeaderText="Essen nachkaufen">
+                <itemtemplate>
+                    <asp:checkbox ID="buy" runat="server"></asp:checkbox>
+                </itemtemplate>
+                </asp:templatefield>
+                <asp:BoundField DataField="menu" HeaderText="Menü" />
+                <asp:BoundField DataField="seller" HeaderText="Anbieter" />
+            </Columns>
+            <FooterStyle BackColor="#990000" Font-Bold="True" ForeColor="White" />
+            <HeaderStyle BackColor="#990000" Font-Bold="True" ForeColor="White" />
+            <PagerStyle BackColor="#FFCC66" ForeColor="#333333" HorizontalAlign="Center" />
+            <RowStyle BackColor="#FFFBD6" ForeColor="#333333" />
+            <SelectedRowStyle BackColor="#FFCC66" Font-Bold="True" ForeColor="Navy" />
+            <SortedAscendingCellStyle BackColor="#FDF5AC" />
+            <SortedAscendingHeaderStyle BackColor="#4D0000" />
+            <SortedDescendingCellStyle BackColor="#FCF6C0" />
+            <SortedDescendingHeaderStyle BackColor="#820000" />
+            </asp:GridView>
     </div>
     </form>
+</body>
 </html>

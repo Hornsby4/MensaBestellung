@@ -31,14 +31,14 @@ CREATE TABLE IF NOT EXISTS `dish` (
 -- Exportiere Struktur von Tabelle 5ahwii_mensa3.menu
 DROP TABLE IF EXISTS `menu`;
 CREATE TABLE IF NOT EXISTS `menu` (
-  `date` date NOT NULL,
+  `dateOfDay` date NOT NULL,
   `sideDish` int DEFAULT NULL,
   `mainDish1` int DEFAULT NULL,
   `mainDish2` int DEFAULT NULL,
   `price` double DEFAULT NULL,
   `foodExchangeOpen` datetime DEFAULT NULL,
   `mensaOpen` bit(1) NOT NULL,
-  PRIMARY KEY (`date`),
+  PRIMARY KEY (`dateOfDay`) USING BTREE,
   KEY `FK_menu_dish` (`sideDish`),
   KEY `FK_menu_dish_2` (`mainDish1`),
   KEY `FK_menu_dish_3` (`mainDish2`),
@@ -68,6 +68,7 @@ CREATE TABLE IF NOT EXISTS `user` (
   `email` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
   `permission_id` int NOT NULL,
   PRIMARY KEY (`user_id`),
+  UNIQUE KEY `email` (`email`),
   KEY `FK_user_permission` (`permission_id`),
   CONSTRAINT `FK_user_permission` FOREIGN KEY (`permission_id`) REFERENCES `permission` (`permission_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci COMMENT='Table for users';
@@ -77,13 +78,13 @@ CREATE TABLE IF NOT EXISTS `user` (
 -- Exportiere Struktur von Tabelle 5ahwii_mensa3.user_orders_menu
 DROP TABLE IF EXISTS `user_orders_menu`;
 CREATE TABLE IF NOT EXISTS `user_orders_menu` (
-  `date` date NOT NULL,
+  `dateOfDay` date NOT NULL,
   `user_id` int NOT NULL,
   `foodExchange` bit(1) NOT NULL,
-  PRIMARY KEY (`date`,`user_id`),
-  KEY `FK_user_oders_menu_menu` (`date`),
+  PRIMARY KEY (`dateOfDay`,`user_id`) USING BTREE,
   KEY `FK_user_orders_menu_user` (`user_id`),
-  CONSTRAINT `FK_user_orders_menu_menu` FOREIGN KEY (`date`) REFERENCES `menu` (`date`),
+  KEY `FK_user_oders_menu_menu` (`dateOfDay`) USING BTREE,
+  CONSTRAINT `FK_user_orders_menu_menu` FOREIGN KEY (`dateOfDay`) REFERENCES `menu` (`dateOfDay`),
   CONSTRAINT `FK_user_orders_menu_user` FOREIGN KEY (`user_id`) REFERENCES `user` (`user_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci COMMENT='filling table for n-n connection menu-user';
 
