@@ -44,7 +44,9 @@ namespace MensaBestellung
                     Session["Email"] = txt_userEmail.Text.ToString();
                     Session["Lastname"] = txt_lastName.Text.ToString();
                     Session["Permission"] = permission;
+                    
                     FormsAuthentication.RedirectFromLoginPage(username, false);
+                    
                 }
                 else
                 {

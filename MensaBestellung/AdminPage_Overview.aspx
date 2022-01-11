@@ -57,6 +57,15 @@
             text-align: center;
             width: 195px;
         }
+        .auto-style50 {
+            width: 330px;
+        }
+        .auto-style51 {
+            width: 1255px;
+        }
+        .auto-style53 {
+            width: 399px;
+        }
     </style>
 </head>
 <body>
@@ -179,16 +188,26 @@
         <br />
         <br />
         <br />
-        Essensplan befüllen:<br />
+        Menü erstellen:<br />
         <br />
-        <table style="width:100%;">
+        <table class="auto-style51">
             <tr>
                 <td class="auto-style49">&nbsp;
                     <asp:TextBox ID="txt_datePicker" runat="server" BackColor="White" Height="22px" Width="176px"></asp:TextBox>
                     <ajaxToolkit:CalendarExtender ID="txt_datePicker_CalendarExtender" runat="server" BehaviorID="txt_datePicker_CalendarExtender" FirstDayOfWeek="Monday" TargetControlID="txt_datePicker" />
                 </td>
-                <td>&nbsp;</td>
-                <td>&nbsp;</td>
+                <td class="auto-style50">
+                    <asp:DropDownList ID="ddl_dish1" runat="server">
+                    </asp:DropDownList>
+                </td>
+                <td class="auto-style50">
+                    <asp:DropDownList ID="ddl_dish2" runat="server">
+                    </asp:DropDownList>
+                </td>
+                <td class="auto-style53">
+                    <asp:DropDownList ID="ddl_sidedish" runat="server" Width="300px">
+                    </asp:DropDownList>
+                </td>
             </tr>
         </table>
         <br />

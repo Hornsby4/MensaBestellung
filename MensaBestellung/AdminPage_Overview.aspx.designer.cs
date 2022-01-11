@@ -168,6 +168,33 @@ namespace MensaBestellung
         protected global::AjaxControlToolkit.CalendarExtender txt_datePicker_CalendarExtender;
 
         /// <summary>
+        /// ddl_dish1 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList ddl_dish1;
+
+        /// <summary>
+        /// ddl_dish2 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList ddl_dish2;
+
+        /// <summary>
+        /// ddl_sidedish control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList ddl_sidedish;
+
+        /// <summary>
         /// ajaxScriptmanager1 control.
         /// </summary>
         /// <remarks>

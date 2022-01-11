@@ -78,7 +78,7 @@
         <br />
         <asp:Button class="Button" ID="btn_goToAdminPage" runat="server" Text="Zur Administration" OnClick="btn_goToAdminPage_Click" Visible="False" />
         <br />
-        <asp:Button class="Button" ID="btn_close" runat="server" Text="Beenden" OnClick="btn_close_Click" />
+        <asp:Button class="Button" ID="btn_close" runat="server" Text="Beenden" />
     </div>
     <div class="PageContent">
         <table class="generalTable">
