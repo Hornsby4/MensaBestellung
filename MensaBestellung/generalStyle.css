@@ -23,16 +23,14 @@
 .PageContent {
     position: absolute;
     left: 220px;
-    top: 39px;
+    top: 50px;
     bottom: 34px;
     right: 10px;
 }
 
 .generalTable {
-    position: absolute;
     font-size: 20px;
     left: 50px;
-    text-align: center;
     border: 1px solid black;
 }
 table{
@@ -42,7 +40,7 @@ table.generalTable tr, table.generalTable th, table.generalTable td  {
     border: 1px solid black;
 }
 
-.tableMenu{
+.tableMenu {
     border: none;
 }
 
@@ -86,4 +84,5 @@ table.tableMenu tr, table.tableMenu th, table.tableMenu td {
     font-size: 25px;
     text-align: center;
 }
+
 
