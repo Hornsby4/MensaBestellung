@@ -105,6 +105,15 @@ namespace MensaBestellung
         protected global::System.Web.UI.WebControls.Button btn_close;
 
         /// <summary>
+        /// lbl_infoLabel control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lbl_infoLabel;
+
+        /// <summary>
         /// CheckBox_monday control.
         /// </summary>
         /// <remarks>
@@ -159,6 +168,15 @@ namespace MensaBestellung
         protected global::System.Web.UI.WebControls.TextBox txt_datePicker;
 
         /// <summary>
+        /// RequiredFieldValidator_MenuDate control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator_MenuDate;
+
+        /// <summary>
         /// txt_datePicker_CalendarExtender control.
         /// </summary>
         /// <remarks>
@@ -193,6 +211,15 @@ namespace MensaBestellung
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.DropDownList ddl_sidedish;
+
+        /// <summary>
+        /// btn_saveNewMenu control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btn_saveNewMenu;
 
         /// <summary>
         /// ajaxScriptmanager1 control.
