@@ -24,6 +24,15 @@ namespace MensaBestellung
         protected global::System.Web.UI.HtmlControls.HtmlForm form1;
 
         /// <summary>
+        /// lbl_price control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lbl_price;
+
+        /// <summary>
         /// lbl_Header control.
         /// </summary>
         /// <remarks>
@@ -159,15 +168,6 @@ namespace MensaBestellung
         protected global::System.Web.UI.WebControls.Label lbl_menu2Monday;
 
         /// <summary>
-        /// lbl_priceMonday control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lbl_priceMonday;
-
-        /// <summary>
         /// lbl_closeFoodExchangeMonday control.
         /// </summary>
         /// <remarks>
@@ -229,15 +229,6 @@ namespace MensaBestellung
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label lbl_menu2Tuesday;
-
-        /// <summary>
-        /// lbl_priceTuesday control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lbl_priceTuesday;
 
         /// <summary>
         /// lbl_closeFoodExchangeTuesday control.
@@ -303,15 +294,6 @@ namespace MensaBestellung
         protected global::System.Web.UI.WebControls.Label lbl_menu2Wendesday;
 
         /// <summary>
-        /// lbl_priceWendesday control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lbl_priceWendesday;
-
-        /// <summary>
         /// lbl_closeFoodExchangeWendesday control.
         /// </summary>
         /// <remarks>
@@ -375,15 +357,6 @@ namespace MensaBestellung
         protected global::System.Web.UI.WebControls.Label lbl_menu2Thursday;
 
         /// <summary>
-        /// lbl_priceThursday control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lbl_priceThursday;
-
-        /// <summary>
         /// lbl_closeFoodExchangeThursday control.
         /// </summary>
         /// <remarks>
@@ -445,15 +418,6 @@ namespace MensaBestellung
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label lbl_menu2Friday;
-
-        /// <summary>
-        /// lbl_priceFriday control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lbl_priceFriday;
 
         /// <summary>
         /// lbl_closeFoodExchangeFriday control.

@@ -10,27 +10,12 @@
         .auto-style1 {
             width: 125px;
         }
-        .auto-style2 {
-            width: 171px;
-        }
-        .auto-style3 {
-            width: 232px;
-        }
-        .auto-style4 {
-            width: 323px;
-        }
         .auto-style5 {
             width: 125px;
             height: 27px;
         }
         .auto-style6 {
             height: 27px;
-        }
-        .auto-style7 {
-            width: 87px;
-        }
-        .auto-style8 {
-            width: 105px;
         }
         .auto-style9 {
             position: absolute;
@@ -53,8 +38,8 @@
 <body>
     <form id="form1" runat="server">
         <div>
-        </div>
-</body>
+        <asp:Label ID="lbl_price" runat="server" Text="Der Preis je Gericht beträgt 5,60€" style="padding-left:15%"></asp:Label>
+    </div>
     <div class ="auto-style9">
         <br />
         <img src="/resources/htl.png" width:"50px" style="height: 100px; width: 159px">
@@ -78,7 +63,7 @@
         <br />
         <asp:Button class="Button" ID="btn_goToAdminPage" runat="server" Text="Zur Administration" OnClick="btn_goToAdminPage_Click" Visible="False" />
         <br />
-        <asp:Button class="Button" ID="btn_close" runat="server" Text="Beenden" />
+        <asp:Button class="Button" ID="btn_close" runat="server" Text="Beenden" OnClick="btn_close_Click" />
     </div>
     <div class="PageContent">
         <table class="generalTable">
@@ -87,7 +72,6 @@
                 <th class="TableHeaders">Essen bestellt</th>
                 <th class="TableHeaders">In Essensbörse anbieten</th>
                 <th class="TableHeaders">Menü</th>
-                <th class="TableHeaders">Preis</th>
                 <th class="TableHeaders">Essensbörse</th>
             </tr>
             <tr >
@@ -109,21 +93,18 @@
                             </td>
                         </tr>
                         <tr>
-                            <td>Menü 1: </td>
+                            <td>Hauptspeise 1: </td>
                             <td>
                                 <asp:Label ID="lbl_menu1Monday" runat="server"></asp:Label>
                             </td>
                         </tr>
                         <tr>
-                            <td>Menü 2: </td>
+                            <td>Hauptspeise 2: </td>
                             <td>
                                 <asp:Label ID="lbl_menu2Monday" runat="server"></asp:Label>
                             </td>
                         </tr>
                     </table>
-                </td>
-                <td>
-                    <asp:Label ID="lbl_priceMonday" runat="server"></asp:Label>
                 </td>
                 <td>
                     <asp:Label ID="lbl_closeFoodExchangeMonday" runat="server"></asp:Label>
@@ -148,21 +129,18 @@
                             </td>
                         </tr>
                         <tr>
-                            <td>Menü 1: </td>
+                            <td>Hauptspeise 1: </td>
                             <td>
                                 <asp:Label ID="lbl_menu1Tuesday" runat="server"></asp:Label>
                             </td>
                         </tr>
                         <tr>
-                            <td>Menü 2: </td>
+                            <td>Hauptspeise 2: </td>
                             <td>
                                 <asp:Label ID="lbl_menu2Tuesday" runat="server"></asp:Label>
                             </td>
                         </tr>
                     </table>
-                </td>
-               <td>
-                   <asp:Label ID="lbl_priceTuesday" runat="server"></asp:Label>
                 </td>
                <td>
                    <asp:Label ID="lbl_closeFoodExchangeTuesday" runat="server"></asp:Label>
@@ -187,21 +165,18 @@
                             </td>
                         </tr>
                         <tr>
-                            <td>Menü 1: </td>
+                            <td>Hauptspeise 1: </td>
                             <td>
                                 <asp:Label ID="lbl_menu1Wendesday" runat="server"></asp:Label>
                             </td>
                         </tr>
                         <tr>
-                            <td>Menü 2: </td>
+                            <td>Hauptspeise 2: </td>
                             <td>
                                 <asp:Label ID="lbl_menu2Wendesday" runat="server"></asp:Label>
                             </td>
                         </tr>
                     </table>
-                </td>
-                <td>
-                    <asp:Label ID="lbl_priceWendesday" runat="server"></asp:Label>
                 </td>
                 <td>
                     <asp:Label ID="lbl_closeFoodExchangeWendesday" runat="server"></asp:Label>
@@ -226,21 +201,18 @@
                             </td>
                         </tr>
                         <tr>
-                            <td>Menü 1: </td>
+                            <td>Hauptspeise 1: </td>
                             <td>
                                 <asp:Label ID="lbl_menu1Thursday" runat="server"></asp:Label>
                             </td>
                         </tr>
                         <tr>
-                            <td>Menü 2: </td>
+                            <td>Hauptspeise 2: </td>
                             <td>
                                 <asp:Label ID="lbl_menu2Thursday" runat="server"></asp:Label>
                             </td>
                         </tr>
                     </table>
-                </td>
-                <td>
-                    <asp:Label ID="lbl_priceThursday" runat="server"></asp:Label>
                 </td>
                 <td>
                     <asp:Label ID="lbl_closeFoodExchangeThursday" runat="server"></asp:Label>
@@ -265,21 +237,18 @@
                             </td>
                         </tr>
                         <tr>
-                            <td>Menü 1: </td>
+                            <td>Hauptspeise 1: </td>
                             <td class="auto-style10">
                                 <asp:Label ID="lbl_menu1Friday" runat="server"></asp:Label>
                             </td>
                         </tr>
                         <tr>
-                            <td>Menü 2: </td>
+                            <td>Hauptspeise 2: </td>
                             <td class="auto-style10">
                                 <asp:Label ID="lbl_menu2Friday" runat="server"></asp:Label>
                             </td>
                         </tr>
                     </table>
-                </td>
-               <td>
-                   <asp:Label ID="lbl_priceFriday" runat="server"></asp:Label>
                 </td>
                <td>
                    <asp:Label ID="lbl_closeFoodExchangeFriday" runat="server"></asp:Label>
@@ -288,5 +257,6 @@
         </table>
         <asp:Label runat="server" ID="lbl_Info" ForeColor="Red"></asp:Label>
     </div>
+</body>
     </form>
 </html>

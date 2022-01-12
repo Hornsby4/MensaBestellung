@@ -6,6 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Web;
 using System.Web.Configuration;
+using System.Web.Security;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
@@ -44,9 +45,9 @@ namespace MensaBestellung
                 {
                 }
 
-                lbl_sideDishMonday.Text = "haojdo";
+                lbl_sideDishMonday.Text = "Suppe";
                 lbl_menu1Monday.Text = "Schnitzel";
-                lbl_menu2Monday.Text = "aasdas";
+                lbl_menu2Monday.Text = "Topfenknödel";
             }
             catch (Exception ex)
             {
@@ -92,5 +93,12 @@ namespace MensaBestellung
         protected void btn_saveOrder_Click(object sender, EventArgs e)
         {
         }
+
+        protected void btn_close_Click(object sender, EventArgs e)
+        {
+            FormsAuthentication.SignOut();
+            Response.Redirect("SignIn.aspx");
+        }
+
     }
 }
