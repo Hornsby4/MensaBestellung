@@ -128,7 +128,7 @@ namespace MensaBestellung
                 catch (Exception x)
                 {
                     lbl_infoLabel.Text = lbl_infoLabel.Text + x.Message;
-                    return false;
+                    
                 }
 
             }
