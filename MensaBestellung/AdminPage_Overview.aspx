@@ -222,7 +222,6 @@
             <tr>
                 <td class="auto-style49">&nbsp;
                     <asp:TextBox ID="txt_datePicker" runat="server" BackColor="White" Height="22px" Width="176px"></asp:TextBox>
-                    <asp:RequiredFieldValidator ID="RequiredFieldValidator_MenuDate" runat="server" ControlToValidate="txt_datePicker" ErrorMessage="Menütag muss Datum beinhalten"></asp:RequiredFieldValidator>
                     <ajaxToolkit:CalendarExtender ID="txt_datePicker_CalendarExtender" runat="server" BehaviorID="txt_datePicker_CalendarExtender" FirstDayOfWeek="Monday" TargetControlID="txt_datePicker" DaysModeTitleFormat="MMMM y" Format="yyyy-MM-dd" />
                 </td>
                 <td class="auto-style50">

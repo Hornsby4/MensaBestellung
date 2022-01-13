@@ -168,15 +168,6 @@ namespace MensaBestellung
         protected global::System.Web.UI.WebControls.TextBox txt_datePicker;
 
         /// <summary>
-        /// RequiredFieldValidator_MenuDate control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator_MenuDate;
-
-        /// <summary>
         /// txt_datePicker_CalendarExtender control.
         /// </summary>
         /// <remarks>
