@@ -46,12 +46,8 @@ namespace MensaBestellung
                 }
 
                 DateTime currentWeekMonday = DateTime.Now.StartOfWeek(DayOfWeek.Monday);
-                //DataTable dt = db.RunQuery("SELECT * FROM menu WHERE dateOfDay BETWEEN '2021-12-13' AND '2021-12-17'");
-
-                //currentWeekMonday.ToLongDateString()
-                //currentWeekMonday.ToShortDateString()
-
-
+                SelectDates(currentWeekMonday);
+                
                 lbl_sideDishMonday.Text = "Suppe";
                 lbl_menu1Monday.Text = "Schnitzel";
                 lbl_menu2Monday.Text = "Topfenknödel";
@@ -62,6 +58,22 @@ namespace MensaBestellung
                 return;
             }
 
+        }
+
+        private void SelectDates(DateTime currentWeekMonday)
+        {
+            DataTable dt;
+            List<string> dates = new List<string>();
+            dt = db.RunQuery($"SELECT menuDate FROM menu WHERE menuDate BETWEEN '{currentWeekMonday.ToString("yyyy-MM-dd")}' AND '{currentWeekMonday.AddDays(4).ToString("yyyy-MM-dd")}'");
+            foreach(DataRow dr in dt.Rows)
+            {
+                dates.Add(((DateTime)dr[0]).ToString("yyyy-MM-dd"));
+            }
+            lbl_dateMonday.Text = dates[0];
+            lbl_dateTuesday.Text = dates[1];
+            lbl_dateWendesday.Text = dates[2];
+            lbl_dateThursday.Text = dates[3];
+            lbl_dateFriday.Text = dates[4];
         }
 
         private void AllowFoodExchange(DataTable dt)
