@@ -22,49 +22,82 @@ namespace MensaBestellung
         {
             try
             {
-                if (!Page.IsPostBack)
-                {
-                    btn_goToAdminPage.Visible = false;
-                }
-                string username = DesignName(User.Identity.Name);
-                lbl_name.Text = username;
-
-                lbl_dateMonday.Text = "2021-12-13";
-                lbl_dateTuesday.Text = "2021-12-16";
-                lbl_dateWendesday.Text = "2021-12-17";
-
 
                 db = new DataBase(connStrg);
                 db.Open();
                 db.Close();
 
-                AllowAdminPage(username);
-                DataTable dt;
-                if (GetExistingOrders(out dt))
+                if (!Page.IsPostBack)
                 {
-                    AllowFoodExchange(dt);
-                }
+                    btn_goToAdminPage.Visible = false;
+                    string username = DesignName(User.Identity.Name);
+                    lbl_name.Text = username;
 
-                DateTime currentWeekMonday = DateTime.Now.StartOfWeek(DayOfWeek.Monday);
-                SelectDates(currentWeekMonday);
-                
-                lbl_sideDishMonday.Text = "Suppe";
-                lbl_menu1Monday.Text = "Schnitzel";
-                lbl_menu2Monday.Text = "Topfenknödel";
+                    AllowAdminPage(username);
+
+                    DateTime currentWeekMonday = DateTime.Now.StartOfWeek(DayOfWeek.Monday);
+                    SelectDates(currentWeekMonday);
+                    SelectMenus(currentWeekMonday);
+                    EnableCheckBoxes();
+
+                    DataTable dt;
+                    if (GetExistingOrders(out dt))
+                    {
+                        AllowFoodExchange(dt);
+                    }
+                }
             }
             catch (Exception ex)
             {
                 lbl_Info.Text = ex.Message;
                 return;
             }
+        }
 
+        private void SelectMenus(DateTime currentWeekMonday)
+        {
+            List<string> sidedish = new List<string>();
+            List<string> maindish1 = new List<string>();
+            List<string> maindish2 = new List<string>();
+            DataTable dt = db.RunQuery($"SELECT sidedish.description, m1.description, m2.description " +
+                $"FROM menu LEFT JOIN sidedish ON menu.sideDish = sidedish.dish_id " +
+                $"LEFT JOIN maindish m1 ON menu.mainDish1 = m1.dish_id " +
+                $"LEFT JOIN maindish m2 ON menu.mainDish2 = m2.dish_id " +
+                $"WHERE menuDate >= '{currentWeekMonday.ToString("yyyy-MM-dd")}' AND menuDate <= '{currentWeekMonday.AddDays(4).ToString("yyyy-MM-dd")}'; ");
+            
+            foreach(DataRow dr in dt.Rows)
+            {
+                sidedish.Add(dr[0].ToString());
+                maindish1.Add(dr[1].ToString());
+                maindish2.Add(dr[2].ToString());
+            }
+
+            lbl_sideDishMonday.Text = sidedish[0];
+            lbl_sideDishTuesday.Text = sidedish[1];
+            lbl_sideDishWendesday.Text = sidedish[2];
+            lbl_sideDishThursday.Text = sidedish[3];
+            lbl_sideDishFriday.Text = sidedish[4];
+
+            lbl_menu1Monday.Text = maindish1[0];
+            lbl_menu1Tuesday.Text = maindish1[1];
+            lbl_menu1Wendesday.Text = maindish1[2];
+            lbl_menu1Thursday.Text = maindish1[3];
+            lbl_menu1Friday.Text = maindish1[4];
+
+            lbl_menu2Monday.Text = maindish2[0];
+            lbl_menu2Tuesday.Text = maindish2[1];
+            lbl_menu2Wendesday.Text = maindish2[2];
+            lbl_menu2Thursday.Text = maindish2[3];
+            lbl_menu2Friday.Text = maindish2[4];
         }
 
         private void SelectDates(DateTime currentWeekMonday)
         {
             DataTable dt;
             List<string> dates = new List<string>();
-            dt = db.RunQuery($"SELECT menuDate FROM menu WHERE menuDate BETWEEN '{currentWeekMonday.ToString("yyyy-MM-dd")}' AND '{currentWeekMonday.AddDays(4).ToString("yyyy-MM-dd")}'");
+            dt = db.RunQuery($"SELECT menuDate FROM menu WHERE menuDate " +
+                $"BETWEEN '{currentWeekMonday.ToString("yyyy-MM-dd")}' " +
+                $"AND '{currentWeekMonday.AddDays(4).ToString("yyyy-MM-dd")}'");
             foreach(DataRow dr in dt.Rows)
             {
                 dates.Add(((DateTime)dr[0]).ToString("yyyy-MM-dd"));
@@ -103,7 +136,14 @@ namespace MensaBestellung
                 return false;
             }
         }
-
+        private void EnableCheckBoxes()
+        {
+            chkBox_foodMonday.Enabled = false;
+            chkBox_foodTuesday.Enabled = false;
+            chkBox_foodWendesday.Enabled = false;
+            chkBox_foodThursday.Enabled = false;
+            chkBox_foodFriday.Enabled = false;
+        }
 
         private void FindAndWorkWithDay(string date, int foodExchange)
         {
@@ -136,6 +176,7 @@ namespace MensaBestellung
             if (foodExchange == 1)
             {
                 chkBox_foodExchange.Checked = true;
+                chkBox_foodExchange.Enabled = true;
             }
             if(foodExchange == 0)
             {
@@ -198,16 +239,13 @@ namespace MensaBestellung
                     int userId = GetUserId();
                     bool updateOrInsert = UpdateOrInsert(date, chkBox_foodExchange, chkBox_menuOfTheDay);
 
-                    if(updateOrInsert == false && isFoodExchangeEnabled == true)
+                    if(updateOrInsert == true && isFoodExchangeEnabled == true || updateOrInsert == false && isFoodExchangeEnabled == false)
                     {
-                        db.RunNonQuery($"UPDATE user_orders_menu SET foodExchange = 1 WHERE menuDate = '{date}' AND user_Id = {userId};");
-                        chkBox_foodExchange.Enabled = false;
+                        db.RunNonQuery($"UPDATE user_orders_menu SET foodExchange = {isFoodExchangeEnabled} WHERE menuDate = '{date}' AND user_Id = {userId};");
                     }
-                    else if(chkBox_menuOfTheDay.Enabled == true)
+                    else
                     {
-                        db.RunNonQuery($"INSERT INTO user_orders_menu(`menuDate`, `user_id`, `foodExchange`) VALUES('{date}', {userId}, {isFoodExchangeEnabled});");
-                        chkBox_foodExchange.Enabled = true;
-                        lbl_Info.Text = "Die Bestellungen wurden erfolgreich gespeichert.";
+                        lbl_Info.Text = "Sie können nur die Essensbörse verändern.";
                     }
                 }
             }
@@ -228,11 +266,11 @@ namespace MensaBestellung
                     int foodExchangeDb = Convert.ToInt32(dr[2]);
                     if (dateDb == date && foodExchangeDb == 0)
                     {
-                        return false;
+                        return true;
                     }
                 }
             }
-            return true;
+            return false;
         }
 
         private int GetUserId()
@@ -255,6 +293,5 @@ namespace MensaBestellung
             FormsAuthentication.SignOut();
             Response.Redirect("SignIn.aspx");
         }
-
     }
 }
