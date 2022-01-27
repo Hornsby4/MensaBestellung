@@ -50,9 +50,9 @@
             <br />
             <br />
             <br />
-            <asp:Button class="Button" ID="btn_nextWeek" runat="server" Text="Nächste Woche" />
+            <asp:Button class="Button" ID="btn_nextWeek" runat="server" Text="Nächste Woche" OnClick="btn_nextWeek_Click" />
             <br />
-            <asp:Button class="Button" ID="btn_lastWeek" runat="server" Text="Vorherige Woche" />
+            <asp:Button class="Button" ID="btn_lastWeek" runat="server" Text="Vorherige Woche" OnClick="btn_lastWeek_Click" />
             <br />
             <asp:Button class="Button" ID="btn_saveOrder" runat="server" Text="Bestellungen speichern" BackColor="#00CC66" OnClick="btn_saveOrder_Click" />
             <br />

@@ -74,7 +74,7 @@ namespace MensaBestellung
             return username;
         }
 
-        public  int GetPermission()
+        private int GetPermission()
         {
             int permissionId = 0;
             try
