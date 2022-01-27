@@ -39,11 +39,13 @@ namespace MensaBestellung
                 bool isUserRegistrated = CheckUser();
                 int permission = GetPermission();
                 string username = GetName();
+                int userID = GetUserId();
                 if ((isUserRegistrated == true && permission == 1) || (isUserRegistrated == true && permission == 2))
                 {
                     Session["Email"] = txt_userEmail.Text.ToString();
                     Session["Lastname"] = txt_lastName.Text.ToString();
                     Session["Permission"] = permission;
+                    Session["UserID"] = userID;
                     
                     FormsAuthentication.RedirectFromLoginPage(username, false);
                     Response.Redirect("UserPage.aspx");
@@ -74,7 +76,7 @@ namespace MensaBestellung
             return username;
         }
 
-        public  int GetPermission()
+        private  int GetPermission()
         {
             int permissionId = 0;
             try
@@ -88,6 +90,20 @@ namespace MensaBestellung
                 throw new Exception("Bitte überprüfen Sie Ihre Eingaben.");
             }
             return permissionId;
+        }
+
+        private int GetUserId()
+        {
+            try
+            {
+                int userId = Convert.ToInt32(db.RunQueryScalar($"SELECT user_id FROM user WHERE email = '{txt_userEmail.Text}';"));
+                return userId;
+            }
+            catch (Exception ex)
+            {
+                lbl_Info.Text = ex.Message;
+            }
+            return -1; // überarbeiten
         }
 
         private bool CheckUser()

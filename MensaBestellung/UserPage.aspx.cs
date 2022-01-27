@@ -126,7 +126,7 @@ namespace MensaBestellung
             dt = new DataTable();
             try
             {
-                int userId = GetUserId();
+                int userId = (int)Session["UserID"];
                 dt = db.RunQuery($"SELECT * FROM user_orders_menu WHERE user_id={userId}");
                 return true;
             }
@@ -236,7 +236,7 @@ namespace MensaBestellung
                     {
                         isFoodExchangeEnabled = true;
                     }
-                    int userId = GetUserId();
+                    int userId = (int)Session["UserID"];
                     bool updateOrInsert = UpdateOrInsert(date, chkBox_foodExchange, chkBox_menuOfTheDay);
 
                     if(updateOrInsert == true && isFoodExchangeEnabled == true || updateOrInsert == false && isFoodExchangeEnabled == false)
@@ -271,21 +271,6 @@ namespace MensaBestellung
                 }
             }
             return false;
-        }
-
-        private int GetUserId()
-        {
-            try
-            {
-                string email = Session["Email"].ToString();
-                int userId = Convert.ToInt32(db.RunQueryScalar($"SELECT user_id FROM user WHERE email = '{email}';"));
-                return userId;
-            }
-            catch(Exception ex)
-            {
-                lbl_Info.Text = ex.Message;
-            }
-            return -1; // überarbeiten
         }
 
         protected void btn_close_Click(object sender, EventArgs e)

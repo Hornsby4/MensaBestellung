@@ -6,41 +6,19 @@
 <head runat="server">
     <link href="generalStyle.css" rel="stylesheet" type="text/css"/>
     <title></title>
-    <style type="text/css">
-        .auto-style1 {
-            width: 137px;
-        }
-        .auto-style2 {
-            width: 160px;
-        }
-        .auto-style3 {
-            width: 241px;
-        }
-        .auto-style4 {
-            width: 173px;
-        }
-        .auto-style5 {
-            height: 25px;
-        }
-        .auto-style6 {
-            text-align: center;
-            background-color: lightcoral;
-            width: 173px;
-        }
-    </style>
-</head>
+    </head>
 <body>
     <form id="form1" runat="server">
     <div class ="Navigation">
         <br />
-        <img src="/resources/htl.png" width:"50px" style="height: 100px; width: 159px">
+        <img src="/resources/htl.png" width:"50px" style="height: 100px; width: 159px"/>
         <br />
         <asp:Label ID="Label1" runat="server" Font-Size="Large" ForeColor="White" Text="Essensbörse"></asp:Label>
         <br />
         <asp:Label ID="lbl_exchangeAndName" runat="server" ForeColor="White"></asp:Label>
         <br />
         <br />
-        <asp:Button class="Button" ID="btn_saveExchangeFoodOrder" runat="server" Text="Einkauf speichern" BackColor="#00CC66" />
+        <asp:Button class="Button" ID="btn_saveExchangeFoodOrder" runat="server" Text="Einkauf speichern" BackColor="#00CC66" OnClick="btn_saveExchangeFoodOrder_Click" />
         <br />
         <asp:Button class="Button" ID="btn_throwAwayExchangeFoodChanges" runat="server" Text="Änderungen verwerfen" />
         <br />
@@ -51,66 +29,19 @@
         <asp:Button class="Button" ID="btn_goBack" runat="server" Text="Zurück" OnClick="btn_goBack_Click" />
     </div>
     <div class="PageContent">
-            <table class="generalTable">
-            <tr>
-                <th class="TableHeaders">Datum</th>
-                <th class="TableHeaders">Essen nachkaufen</th>
-                <th class="TableHeaders">Menü</th>
-                <th class="auto-style6">Anbieter</th>
-                
-            </tr>
-            <tr>
-                <td class="auto-style1"> 
-                    <asp:Label ID="lbl_date" runat="server"></asp:Label>
-                </td>
-                <td class="auto-style2"> 
-                    <asp:CheckBox ID="chkBox_buyExchangeFood" runat="server" />
-                </td>
-                <td class="auto-style3"> 
-                    <table class="tableMenu">
-                        <tr>
-                            <td>Beilage: </td>
-                            <td>
-                                <asp:Label ID="lbl_sideDish" runat="server"></asp:Label>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td class="auto-style5">Menü 1: </td>
-                            <td class="auto-style5">
-                                <asp:Label ID="lbl_menu1" runat="server"></asp:Label>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>Menü 2: </td>
-                            <td>
-                                <asp:Label ID="lbl_menu2" runat="server"></asp:Label>
-                            </td>
-                        </tr>
-                    </table>
-                </td>
-                <td class="auto-style4">
-                    
-                    <asp:Label ID="lbl_provider" runat="server"></asp:Label>
-                    
-                </td>
-           </tr>
-        </table>
-        <br />
-        <br />
-        <br />
-            <br />
-            <br />
-        <asp:GridView ID="gv_foodExchange" runat="server" CellPadding="4" ForeColor="#333333" Width="838px" AutoGenerateColumns="False">
+            &nbsp;&nbsp;&nbsp;<asp:Label ID="lbl_text" runat="server" Text="Der Preis je Gericht beträgt 5,60€ - Die Essensbörse schließt täglich um 13:30 Uhr !"></asp:Label>
+&nbsp;<asp:GridView ID="gv_foodExchange" runat="server" CellPadding="4" ForeColor="#333333" Width="841px" AutoGenerateColumns="False">
             <AlternatingRowStyle BackColor="White" />
             <Columns>
-                <asp:BoundField DataField="dateOfDay" HeaderText="dateOfDay" />
-                <asp:templatefield HeaderText="Essen nachkaufen">
+                <asp:BoundField DataField="menuDate" HeaderText="Datum" DataFormatString="{0:d}" HtmlEncode="false"/>
+                <asp:templatefield HeaderText="Essen nachkaufen" >
                 <itemtemplate>
-                    <asp:checkbox ID="buy" runat="server"></asp:checkbox>
+                    <asp:checkbox ID="buy" runat="server" OnCheckedChanged="SelectCheckBox_OnCheckedChanged" AutoPostBack="true"/>
                 </itemtemplate>
+                    <ItemStyle HorizontalAlign="Center" />
                 </asp:templatefield>
-                <asp:BoundField DataField="menu" HeaderText="Menü" />
-                <asp:BoundField DataField="seller" HeaderText="Anbieter" />
+                <asp:BoundField DataField="menu" HeaderText="Menü" HtmlEncode="false"/>
+                <asp:BoundField DataField="seller" HeaderText="Anbieter" HtmlEncode="false"/>
             </Columns>
             <FooterStyle BackColor="#990000" Font-Bold="True" ForeColor="White" />
             <HeaderStyle BackColor="#990000" Font-Bold="True" ForeColor="White" />
@@ -122,6 +53,8 @@
             <SortedDescendingCellStyle BackColor="#FCF6C0" />
             <SortedDescendingHeaderStyle BackColor="#820000" />
             </asp:GridView>
+            <br />
+            <asp:Label ID="lbl_info" runat="server"></asp:Label>
     </div>
     </form>
 </body>
