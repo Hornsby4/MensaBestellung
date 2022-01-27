@@ -221,20 +221,20 @@
         <table class="auto-style51">
             <tr>
                 <td class="auto-style49">&nbsp;
-                    <asp:TextBox ID="txt_datePicker" runat="server" BackColor="White" Height="22px" Width="176px"></asp:TextBox>
+                    <asp:TextBox ID="txt_datePicker" runat="server" BackColor="White" Height="22px" Width="176px" autocomplete="off"></asp:TextBox>
                     <ajaxToolkit:CalendarExtender ID="txt_datePicker_CalendarExtender" runat="server" BehaviorID="txt_datePicker_CalendarExtender" FirstDayOfWeek="Monday" TargetControlID="txt_datePicker" DaysModeTitleFormat="MMMM y" Format="yyyy-MM-dd" />
                 </td>
                 <td class="auto-style50">
-                    <asp:DropDownList ID="ddl_dish1" runat="server">
-                    </asp:DropDownList>
+                    <ajaxToolkit:ComboBox ID="comboB_maindish1" runat="server" AutoCompleteMode="Suggest" DropDownStyle="DropDown">
+                    </ajaxToolkit:ComboBox>
                 </td>
                 <td class="auto-style50">
-                    <asp:DropDownList ID="ddl_dish2" runat="server">
-                    </asp:DropDownList>
+                    <ajaxToolkit:ComboBox ID="comboB_maindish2" runat="server" AutoCompleteMode="Suggest" DropDownStyle="DropDown" >
+                    </ajaxToolkit:ComboBox>
                 </td>
                 <td class="auto-style53">
-                    <asp:DropDownList ID="ddl_sidedish" runat="server" Width="300px">
-                    </asp:DropDownList>
+                    <ajaxToolkit:ComboBox ID="comboB_sidedish" runat="server" AutoCompleteMode="None" DropDownStyle="DropDown">
+                    </ajaxToolkit:ComboBox>
                 </td>
             </tr>
         </table>
@@ -243,6 +243,7 @@
         <br />
         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
         <asp:Button class="Button" ID="btn_saveNewMenu" runat="server" Text="Menü speichern" BackColor="#00CC66" OnClick="btn_saveNewMenu_Click" />
+        &nbsp;
         <br />
         <br />
         <br />

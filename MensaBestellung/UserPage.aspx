@@ -82,7 +82,7 @@
                     <asp:CheckBox ID="chkBox_foodMonday" runat="server" />
                 </td>
                 <td> 
-                    <asp:CheckBox ID="chkBox_foodExchangeMonday" runat="server" />
+                    <asp:CheckBox ID="chkBox_foodExchangeMonday" runat="server" Enabled="False" />
                 </td>
                 <td>
                     <table class="tableMenu">
@@ -118,7 +118,7 @@
                     <asp:CheckBox ID="chkBox_foodTuesday" runat="server" />
                 </td>
                 <td>
-                    <asp:CheckBox ID="chkBox_foodExchangeTuesday" runat="server" />
+                    <asp:CheckBox ID="chkBox_foodExchangeTuesday" runat="server" Enabled="False" />
                 </td>
                 <td>
                     <table class="tableMenu">
@@ -154,7 +154,7 @@
                     <asp:CheckBox ID="chkBox_foodWendesday" runat="server" />
                 </td>
                 <td class="auto-style6">
-                    <asp:CheckBox ID="chkBox_foodExchangeWendesday" runat="server" />
+                    <asp:CheckBox ID="chkBox_foodExchangeWendesday" runat="server" Enabled="False" />
                 </td>
                 <td>
                      <table class="tableMenu">
@@ -190,7 +190,7 @@
                     <asp:CheckBox ID="chkBox_foodThursday" runat="server" />
                 </td>
                 <td>
-                    <asp:CheckBox ID="chkBox_foodExchangeThursday" runat="server" />
+                    <asp:CheckBox ID="chkBox_foodExchangeThursday" runat="server" Enabled="False" />
                 </td>
                 <td>
                     <table class="tableMenu">
@@ -226,7 +226,7 @@
                     <asp:CheckBox ID="chkBox_foodFriday" runat="server" />
                 </td>
                 <td>
-                    <asp:CheckBox ID="chkBox_foodExchangeFriday" runat="server" />
+                    <asp:CheckBox ID="chkBox_foodExchangeFriday" runat="server" Enabled="False" />
                 </td>
                 <td>
                     <table class="tableMenu">
