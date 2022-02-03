@@ -122,7 +122,7 @@ namespace MensaBestellung
                 if (execute) db.RunNonQuery(sqlCmd.Remove(sqlCmd.Length - 3));
                 dialogBox.description("Essen wurde bestellt");
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 dialogBox.description("Fehler! Es ist ein Problem aufgetreten, bitte versuchen Sie es später nocheinmal.");
             }
