@@ -235,6 +235,8 @@ namespace MensaBestellung
                 dt = db.RunQuery($"SELECT * FROM user_orders_menu WHERE user_id={userId} " +
                     $"AND menuDate BETWEEN '{whisedWeek.ToString("yyyy-MM-dd")}' " +
                     $"AND '{whisedWeek.AddDays(4).ToString("yyyy-MM-dd")}';");
+                int userId = (int)Session["UserID"];
+                dt = db.RunQuery($"SELECT * FROM user_orders_menu WHERE user_id={userId}");
                 return true;
             }
             catch (Exception ex)
@@ -333,7 +335,7 @@ namespace MensaBestellung
 
         protected void btn_goToAdminPage_Click(object sender, EventArgs e)
         {
-            Response.Redirect("AdminPage.aspx");
+            Response.Redirect("AdminPage_Overview.aspx");
         }
 
         protected void btn_saveOrder_Click(object sender, EventArgs e)
@@ -356,6 +358,15 @@ namespace MensaBestellung
                 }
                 int userId = GetUserId();
                 bool updateOrInsert = UpdateOrInsert(date, chkBox_foodExchange, chkBox_menuOfTheDay);
+                if(chkBox_menuOfTheDay.Checked == true)
+                {
+                    bool isFoodExchangeEnabled = false;
+                    if(chkBox_foodExchange.Checked == true)
+                    {
+                        isFoodExchangeEnabled = true;
+                    }
+                    int userId = (int)Session["UserID"];
+                    bool updateOrInsert = UpdateOrInsert(date, chkBox_foodExchange, chkBox_menuOfTheDay);
 
                 if(updateOrInsert == true && isFoodExchangeEnabled == true || updateOrInsert == false && isFoodExchangeEnabled == false)
                 {
@@ -400,21 +411,6 @@ namespace MensaBestellung
                 }
             }
             return false;
-        }
-
-        private int GetUserId()
-        {
-            try
-            {
-                string email = Session["Email"].ToString();
-                int userId = Convert.ToInt32(db.RunQueryScalar($"SELECT user_id FROM user WHERE email = '{email}';"));
-                return userId;
-            }
-            catch(Exception ex)
-            {
-                lbl_Info.Text = ex.Message;
-            }
-            return -1; // überarbeiten
         }
 
         protected void btn_close_Click(object sender, EventArgs e)

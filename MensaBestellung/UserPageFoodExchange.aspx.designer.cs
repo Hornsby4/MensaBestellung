@@ -69,58 +69,13 @@ namespace MensaBestellung
         protected global::System.Web.UI.WebControls.Button btn_goBack;
 
         /// <summary>
-        /// lbl_date control.
+        /// lbl_text control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lbl_date;
-
-        /// <summary>
-        /// chkBox_buyExchangeFood control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.CheckBox chkBox_buyExchangeFood;
-
-        /// <summary>
-        /// lbl_sideDish control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lbl_sideDish;
-
-        /// <summary>
-        /// lbl_menu1 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lbl_menu1;
-
-        /// <summary>
-        /// lbl_menu2 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lbl_menu2;
-
-        /// <summary>
-        /// lbl_provider control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lbl_provider;
+        protected global::System.Web.UI.WebControls.Label lbl_text;
 
         /// <summary>
         /// gv_foodExchange control.
@@ -130,5 +85,14 @@ namespace MensaBestellung
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.GridView gv_foodExchange;
+
+        /// <summary>
+        /// lbl_info control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lbl_info;
     }
 }

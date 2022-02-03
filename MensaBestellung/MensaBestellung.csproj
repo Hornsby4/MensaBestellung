@@ -71,9 +71,11 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="AdminPage_Overview.aspx" />
+    <Content Include="DialogBox.ascx" />
     <Content Include="generalStyle.css" />
     <Content Include="resources\htl.png" />
     <Content Include="SignIn.aspx" />
+    <Content Include="styles\default.css" />
     <Content Include="UserPage.aspx" />
     <Content Include="UserPageFoodExchange.aspx" />
     <Content Include="Web.config" />
@@ -85,6 +87,13 @@
     </Compile>
     <Compile Include="AdminPage_Overview.aspx.designer.cs">
       <DependentUpon>AdminPage_Overview.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="DialogBox.ascx.cs">
+      <DependentUpon>DialogBox.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="DialogBox.ascx.designer.cs">
+      <DependentUpon>DialogBox.ascx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SignIn.aspx.cs">
