@@ -13,12 +13,12 @@ namespace MensaBestellung
 {
     public partial class UserPageFoodExchange : System.Web.UI.Page
     {
-        string connStrg = WebConfigurationManager.ConnectionStrings["AppDbInt"].ConnectionString;
-        //string connStrg = WebConfigurationManager.ConnectionStrings["AppDbExt"].ConnectionString;
+        readonly string connStrg = WebConfigurationManager.ConnectionStrings["AppDbInt"].ConnectionString;
+        //readonly string connStrg = WebConfigurationManager.ConnectionStrings["AppDbExt"].ConnectionString;
 
+        readonly DateTime currentWeekMonday = DateTime.Now.StartOfWeek(DayOfWeek.Monday);
+        
         DataBase db;
-
-        DateTime currentWeekMonday = DateTime.Now.StartOfWeek(DayOfWeek.Monday);
         protected void Page_Load(object sender, EventArgs e)
         {
             try
@@ -39,7 +39,7 @@ namespace MensaBestellung
         private void DisableDoubleOrder()
         {
             DataTable dtOrders = db.RunQuery($"SELECT menuDate FROM user_orders_menu WHERE user_id = {Session["UserID"]} " +
-                $"AND user_orders_menu.menuDate BETWEEN '{currentWeekMonday.ToString("yyyy-MM-dd")}' AND '{currentWeekMonday.AddDays(4).ToString("yyyy-MM-dd")}'");
+                $"AND user_orders_menu.menuDate BETWEEN '{currentWeekMonday:yyyy-MM-dd}' AND '{currentWeekMonday.AddDays(4):yyyy-MM-dd}'");
             foreach (GridViewRow row in gv_foodExchange.Rows)
             {
                 CheckBox chk = (CheckBox)row.FindControl("buy");
@@ -73,10 +73,21 @@ namespace MensaBestellung
                 $"LEFT JOIN maindish main1 ON menu.mainDish1 = main1.dish_id " +
                 $"LEFT JOIN maindish main2 ON menu.mainDish2 = main2.dish_id " +
                 $"WHERE user_orders_menu.foodExchange = 1 " +
-                $"AND user_orders_menu.menuDate BETWEEN '{(TimeSpan.Compare(DateTime.Now.TimeOfDay,new TimeSpan(13,30,00))>0?DateTime.Now.ToString("yyyy-MM-dd"):DateTime.Now.AddDays(1).ToString("yyyy-MM-dd"))}' AND '{currentWeekMonday.AddDays(4).ToString("yyyy -MM-dd")}'");
+                $"AND user_orders_menu.menuDate BETWEEN " +
+                $"'{(TimeSpan.Compare(DateTime.Now.TimeOfDay,new TimeSpan(13,30,00))<0?DateTime.Now.ToString("yyyy-MM-dd"):DateTime.Now.AddDays(1).ToString("yyyy-MM-dd"))}' " +
+                $"AND '{currentWeekMonday.AddDays(5):yyyy-MM-dd}'");
 
             gv_foodExchange.DataSource = dt;
             gv_foodExchange.DataBind();
+
+            lbl_info.Text = "";
+            lbl_text.Visible = true;
+
+            if (dt.Rows.Count == 0)
+            {
+                lbl_info.Text = "Es werden zur Zeit keine Gerichte in der Essensbörse angeboten!";
+                lbl_text.Visible = false;
+            }
 
             DisableDoubleOrder();
         }
@@ -84,16 +95,10 @@ namespace MensaBestellung
         protected void SelectCheckBox_OnCheckedChanged(object sender, EventArgs e)
         {
             GridViewRow row = ((GridViewRow)((CheckBox)sender).NamingContainer);
-            int index = row.RowIndex;
-            CheckBox cb1 = (CheckBox)gv_foodExchange.Rows[index].FindControl("buy");
-            bool isChecked = cb1.Checked;
-
             row.BackColor = Color.Yellow;
-            
-            //row.BackColor = default(Color);
         }
 
-        protected void btn_saveExchangeFoodOrder_Click(object sender, EventArgs e)
+        protected void btn_saveOrder_Click(object sender, EventArgs e)
         {
             DialogBox dialogBox = (DialogBox)LoadControl("DialogBox.ascx");
             dialogBox.Title = "Speichern";
@@ -124,7 +129,7 @@ namespace MensaBestellung
             }
             catch (Exception)
             {
-                dialogBox.description("Fehler! Es ist ein Problem aufgetreten, bitte versuchen Sie es später nocheinmal.");
+                dialogBox.description($"Fehler! Es ist ein Problem aufgetreten, bitte versuchen Sie es später nocheinmal.\n\nError:{ex}");
             }
             finally
             {
@@ -132,6 +137,10 @@ namespace MensaBestellung
                 
                 form1.Controls.Add(dialogBox);
             }
+        }
+        protected void btn_cancelChanges_Click(object sender, EventArgs e)
+        {
+            Response.Redirect(Request.RawUrl);
         }
 
         protected void btn_goBack_Click(object sender, EventArgs e)

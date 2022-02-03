@@ -46,7 +46,7 @@ namespace MensaBestellung
                     Session["Lastname"] = txt_lastName.Text.ToString();
                     Session["Permission"] = permission;
                     Session["UserID"] = userID;
-                    
+
                     FormsAuthentication.RedirectFromLoginPage(username, false);
                     Response.Redirect("UserPage.aspx");
                 }

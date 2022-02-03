@@ -18,9 +18,9 @@
         <asp:Label ID="lbl_exchangeAndName" runat="server" ForeColor="White"></asp:Label>
         <br />
         <br />
-        <asp:Button class="Button" ID="btn_saveExchangeFoodOrder" runat="server" Text="Einkauf speichern" BackColor="#00CC66" OnClick="btn_saveExchangeFoodOrder_Click" />
+        <asp:Button class="Button" ID="btn_saveOrder" runat="server" Text="Einkauf speichern" BackColor="#00CC66" OnClick="btn_saveOrder_Click" />
         <br />
-        <asp:Button class="Button" ID="btn_throwAwayExchangeFoodChanges" runat="server" Text="Änderungen verwerfen" />
+        <asp:Button class="Button" ID="btn_cancelChanges" runat="server" Text="Änderungen verwerfen" OnClick="btn_cancelChanges_Click" />
         <br />
         <br />
         <br />
@@ -54,7 +54,7 @@
             <SortedDescendingHeaderStyle BackColor="#820000" />
             </asp:GridView>
             <br />
-            <asp:Label ID="lbl_info" runat="server"></asp:Label>
+            <asp:Label ID="lbl_info" runat="server" ForeColor="Red"></asp:Label>
     </div>
     </form>
 </body>
