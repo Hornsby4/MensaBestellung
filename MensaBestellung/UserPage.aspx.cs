@@ -47,6 +47,7 @@ namespace MensaBestellung
                     else
                     {
                         DisableCheckBoxesFood();
+                        DisableCheckBoxFoodExchange();
 
                         DataTable dt;
                         if (GetExistingOrders(currentWeekMonday, out dt))
@@ -95,6 +96,7 @@ namespace MensaBestellung
                 if (time == -1)
                 {
                     lbl_closeFoodExchange.Text = "Essensbörse geschlossen.";
+                    chkBox_foodExchange.Enabled = false;
                 }
                 else if (time == 0)
                 {
@@ -113,6 +115,7 @@ namespace MensaBestellung
             else
             {
                 lbl_closeFoodExchange.Text = "Essensbörse geschlossen.";
+                chkBox_foodExchange.Enabled = false;
             }
         }
 
@@ -601,5 +604,7 @@ namespace MensaBestellung
                 IsWeekBeforeOrAfter(dt);
             }
         }
+
+        
     }
 }
