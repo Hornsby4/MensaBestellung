@@ -38,225 +38,226 @@
 <body>
     <form id="form1" runat="server">
         <div>
-            <asp:Label ID="lbl_price" runat="server" Text="Der Preis je Gericht beträgt 5,60€" style="padding-left:15%"></asp:Label>
-        </div>
-        <div class ="auto-style9">
-            <br />
-            <img src="/resources/htl.png" width:"50px" style="height: 100px; width: 159px">
-            <br />
-            <asp:Label ID="lbl_Header" runat="server" Text="Menüs bestellen" Font-Size="Large" ForeColor="White"></asp:Label>
-            <br />
-            <asp:Label ID="lbl_name" runat="server" ForeColor="White"></asp:Label>
-            <br />
-            <br />
-            <br />
-            <asp:Button class="Button" ID="btn_nextWeek" runat="server" Text="Nächste Woche" />
-            <br />
-            <asp:Button class="Button" ID="btn_lastWeek" runat="server" Text="Vorherige Woche" />
-            <br />
-            <asp:Button class="Button" ID="btn_saveOrder" runat="server" Text="Bestellungen speichern" BackColor="#00CC66" OnClick="btn_saveOrder_Click" />
-            <br />
-            <asp:Button class="Button" ID="btn_throwAwayChanges" runat="server" Text="Änderungen verwerfen"/>
-            <br />
-            <asp:Button class="Button" ID="btn_buyMoreFood" runat="server" Text="Essen nachkaufen" OnClick="btn_buyMoreFood_Click" />
-            <br />
-            <br />
-            <asp:Button class="Button" ID="btn_goToAdminPage" runat="server" Text="Zur Administration" OnClick="btn_goToAdminPage_Click" Visible="False" />
-            <br />
-            <asp:Button class="Button" ID="btn_close" runat="server" Text="Beenden" OnClick="btn_close_Click" />
-        </div>
-        <div class="PageContent">
-            <table class="generalTable">
-                <tr>
-                    <th class="TableHeaders">Datum</th>
-                    <th class="TableHeaders">Essen bestellt</th>
-                    <th class="TableHeaders">In Essensbörse anbieten</th>
-                    <th class="TableHeaders">Menü</th>
-                    <th class="TableHeaders">Essensbörse</th>
-                </tr>
-                <tr >
-                    <td> 
-                        <asp:Label ID="lbl_dateMonday" runat="server"></asp:Label>
-                    </td>
-                    <td> 
-                        <asp:CheckBox ID="chkBox_foodMonday" runat="server" />
-                    </td>
-                    <td> 
-                        <asp:CheckBox ID="chkBox_foodExchangeMonday" runat="server" Enabled="False" />
-                    </td>
-                    <td>
-                        <table class="tableMenu">
-                            <tr>
-                                <td>Beilage: </td>
-                                <td>
-                                    <asp:Label ID="lbl_sideDishMonday" runat="server"></asp:Label>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>Hauptspeise 1: </td>
-                                <td>
-                                    <asp:Label ID="lbl_menu1Monday" runat="server"></asp:Label>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>Hauptspeise 2: </td>
-                                <td>
-                                    <asp:Label ID="lbl_menu2Monday" runat="server"></asp:Label>
-                                </td>
-                            </tr>
-                        </table>
-                    </td>
-                    <td>
-                        <asp:Label ID="lbl_closeFoodExchangeMonday" runat="server"></asp:Label>
-                    </td>
-               </tr>
-               <tr>
-                    <td class="auto-style1" > 
-                        <asp:Label ID="lbl_dateTuesday" runat="server"></asp:Label>
-                    </td>
-                    <td>
-                        <asp:CheckBox ID="chkBox_foodTuesday" runat="server" />
-                    </td>
-                    <td>
-                        <asp:CheckBox ID="chkBox_foodExchangeTuesday" runat="server" Enabled="False" />
-                    </td>
-                    <td>
-                        <table class="tableMenu">
-                            <tr>
-                                <td>Beilage: </td>
-                                <td>
-                                    <asp:Label ID="lbl_sideDishTuesday" runat="server"></asp:Label>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>Hauptspeise 1: </td>
-                                <td>
-                                    <asp:Label ID="lbl_menu1Tuesday" runat="server"></asp:Label>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>Hauptspeise 2: </td>
-                                <td>
-                                    <asp:Label ID="lbl_menu2Tuesday" runat="server"></asp:Label>
-                                </td>
-                            </tr>
-                        </table>
-                    </td>
-                   <td>
-                       <asp:Label ID="lbl_closeFoodExchangeTuesday" runat="server"></asp:Label>
-                    </td>
-               </tr>
-                <tr>
-                    <td class="auto-style5" > 
-                        <asp:Label ID="lbl_dateWendesday" runat="server"></asp:Label>
-                    </td>
-                    <td class="auto-style6">
-                        <asp:CheckBox ID="chkBox_foodWendesday" runat="server" />
-                    </td>
-                    <td class="auto-style6">
-                        <asp:CheckBox ID="chkBox_foodExchangeWendesday" runat="server" Enabled="False" />
-                    </td>
-                    <td>
-                         <table class="tableMenu">
-                            <tr>
-                                <td>Beilage: </td>
-                                <td>
-                                    <asp:Label ID="lbl_sideDishWendesday" runat="server"></asp:Label>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>Hauptspeise 1: </td>
-                                <td>
-                                    <asp:Label ID="lbl_menu1Wendesday" runat="server"></asp:Label>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>Hauptspeise 2: </td>
-                                <td>
-                                    <asp:Label ID="lbl_menu2Wendesday" runat="server"></asp:Label>
-                                </td>
-                            </tr>
-                        </table>
-                    </td>
-                    <td>
-                        <asp:Label ID="lbl_closeFoodExchangeWendesday" runat="server"></asp:Label>
-                    </td>
-               </tr>
-                <tr>
-                    <td class="auto-style1" > 
-                        <asp:Label ID="lbl_dateThursday" runat="server"></asp:Label>
-                    </td>
-                    <td>
-                        <asp:CheckBox ID="chkBox_foodThursday" runat="server" />
-                    </td>
-                    <td>
-                        <asp:CheckBox ID="chkBox_foodExchangeThursday" runat="server" Enabled="False" />
-                    </td>
-                    <td>
-                        <table class="tableMenu">
-                            <tr>
-                                <td class="auto-style11">Beilage: </td>
-                                <td class="auto-style11">
-                                    <asp:Label ID="lbl_sideDishThursday" runat="server"></asp:Label>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>Hauptspeise 1: </td>
-                                <td>
-                                    <asp:Label ID="lbl_menu1Thursday" runat="server"></asp:Label>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>Hauptspeise 2: </td>
-                                <td>
-                                    <asp:Label ID="lbl_menu2Thursday" runat="server"></asp:Label>
-                                </td>
-                            </tr>
-                        </table>
-                    </td>
-                    <td>
-                        <asp:Label ID="lbl_closeFoodExchangeThursday" runat="server"></asp:Label>
-                    </td>
-               </tr>
-               <tr>
-                    <td class="auto-style1" > 
-                        <asp:Label ID="lbl_dateFriday" runat="server"></asp:Label>
-                    </td>
-                    <td>
-                        <asp:CheckBox ID="chkBox_foodFriday" runat="server" />
-                    </td>
-                    <td>
-                        <asp:CheckBox ID="chkBox_foodExchangeFriday" runat="server" Enabled="False" />
-                    </td>
-                    <td>
-                        <table class="tableMenu">
-                            <tr>
-                                <td>Beilage: </td>
-                                <td class="auto-style10">
-                                    <asp:Label ID="lbl_sideDishFriday" runat="server"></asp:Label>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>Hauptspeise 1: </td>
-                                <td class="auto-style10">
-                                    <asp:Label ID="lbl_menu1Friday" runat="server"></asp:Label>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>Hauptspeise 2: </td>
-                                <td class="auto-style10">
-                                    <asp:Label ID="lbl_menu2Friday" runat="server"></asp:Label>
-                                </td>
-                            </tr>
-                        </table>
-                    </td>
-                   <td>
-                       <asp:Label ID="lbl_closeFoodExchangeFriday" runat="server"></asp:Label>
-                    </td>
-               </tr>
-            </table>
-            <asp:Label runat="server" ID="lbl_Info" ForeColor="Red"></asp:Label>
-        </div>
+        <asp:Label ID="lbl_price" runat="server" Text="Der Preis je Gericht beträgt 5,60€" style="padding-left:15%"></asp:Label>
+    </div>
+    <div class ="auto-style9">
+        <br />
+        <img src="/resources/htl.png" width:"50px" style="height: 100px; width: 159px">
+        <br />
+        <asp:Label ID="lbl_Header" runat="server" Text="Menüs bestellen" Font-Size="Large" ForeColor="White"></asp:Label>
+        <br />
+        <asp:Label ID="lbl_name" runat="server" ForeColor="White"></asp:Label>
+        <br />
+        <br />
+        <br />
+        <asp:Button class="Button" ID="btn_nextWeek" runat="server" Text="Nächste Woche" OnClick="btn_nextWeek_Click" />
+        <br />
+        <asp:Button class="Button" ID="btn_lastWeek" runat="server" Text="Vorherige Woche" OnClick="btn_lastWeek_Click" />
+        <br />
+        <asp:Button class="Button" ID="btn_saveOrder" runat="server" Text="Bestellungen speichern" BackColor="#00CC66" OnClick="btn_saveOrder_Click" />
+        <br />
+        <asp:Button class="Button" ID="btn_throwAwayChanges" runat="server" Text="Änderungen verwerfen"/>
+        <br />
+        <asp:Button class="Button" ID="btn_buyMoreFood" runat="server" Text="Essen nachkaufen" OnClick="btn_buyMoreFood_Click" />
+        <br />
+        <br />
+        <asp:Button class="Button" ID="btn_goToAdminPage" runat="server" Text="Zur Administration" OnClick="btn_goToAdminPage_Click" Visible="False" />
+        <br />
+        <asp:Button class="Button" ID="btn_close" runat="server" Text="Beenden" OnClick="btn_close_Click" />
+    </div>
+    <div class="PageContent">
+        <table class="generalTable">
+            <tr>
+                <th class="TableHeaders">Datum</th>
+                <th class="TableHeaders">Essen bestellt</th>
+                <th class="TableHeaders">In Essensbörse anbieten</th>
+                <th class="TableHeaders">Menü</th>
+                <th class="TableHeaders">Essensbörse</th>
+            </tr>
+            <tr >
+                <td> 
+                    <asp:Label ID="lbl_dateMonday" runat="server"></asp:Label>
+                </td>
+                <td> 
+                    <asp:CheckBox ID="chkBox_foodMonday" runat="server" />
+                </td>
+                <td> 
+                    <asp:CheckBox ID="chkBox_foodExchangeMonday" runat="server" />
+                </td>
+                <td>
+                    <table class="tableMenu">
+                        <tr>
+                            <td>Beilage: </td>
+                            <td>
+                                <asp:Label ID="lbl_sideDishMonday" runat="server"></asp:Label>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Hauptspeise 1: </td>
+                            <td>
+                                <asp:Label ID="lbl_menu1Monday" runat="server"></asp:Label>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Hauptspeise 2: </td>
+                            <td>
+                                <asp:Label ID="lbl_menu2Monday" runat="server"></asp:Label>
+                            </td>
+                        </tr>
+                    </table>
+                </td>
+                <td>
+                    <asp:Label ID="lbl_closeFoodExchangeMonday" runat="server"></asp:Label>
+                </td>
+           </tr>
+           <tr>
+                <td class="auto-style1" > 
+                    <asp:Label ID="lbl_dateTuesday" runat="server"></asp:Label>
+                </td>
+                <td>
+                    <asp:CheckBox ID="chkBox_foodTuesday" runat="server" />
+                </td>
+                <td>
+                    <asp:CheckBox ID="chkBox_foodExchangeTuesday" runat="server" />
+                </td>
+                <td>
+                    <table class="tableMenu">
+                        <tr>
+                            <td>Beilage: </td>
+                            <td>
+                                <asp:Label ID="lbl_sideDishTuesday" runat="server"></asp:Label>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Hauptspeise 1: </td>
+                            <td>
+                                <asp:Label ID="lbl_menu1Tuesday" runat="server"></asp:Label>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Hauptspeise 2: </td>
+                            <td>
+                                <asp:Label ID="lbl_menu2Tuesday" runat="server"></asp:Label>
+                            </td>
+                        </tr>
+                    </table>
+                </td>
+               <td>
+                   <asp:Label ID="lbl_closeFoodExchangeTuesday" runat="server"></asp:Label>
+                </td>
+           </tr>
+            <tr>
+                <td class="auto-style5" > 
+                    <asp:Label ID="lbl_dateWendesday" runat="server"></asp:Label>
+                </td>
+                <td class="auto-style6">
+                    <asp:CheckBox ID="chkBox_foodWendesday" runat="server" />
+                </td>
+                <td class="auto-style6">
+                    <asp:CheckBox ID="chkBox_foodExchangeWendesday" runat="server" />
+                </td>
+                <td>
+                     <table class="tableMenu">
+                        <tr>
+                            <td>Beilage: </td>
+                            <td>
+                                <asp:Label ID="lbl_sideDishWendesday" runat="server"></asp:Label>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Hauptspeise 1: </td>
+                            <td>
+                                <asp:Label ID="lbl_menu1Wendesday" runat="server"></asp:Label>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Hauptspeise 2: </td>
+                            <td>
+                                <asp:Label ID="lbl_menu2Wendesday" runat="server"></asp:Label>
+                            </td>
+                        </tr>
+                    </table>
+                </td>
+                <td>
+                    <asp:Label ID="lbl_closeFoodExchangeWendesday" runat="server"></asp:Label>
+                </td>
+           </tr>
+            <tr>
+                <td class="auto-style1" > 
+                    <asp:Label ID="lbl_dateThursday" runat="server"></asp:Label>
+                </td>
+                <td>
+                    <asp:CheckBox ID="chkBox_foodThursday" runat="server" />
+                </td>
+                <td>
+                    <asp:CheckBox ID="chkBox_foodExchangeThursday" runat="server" />
+                </td>
+                <td>
+                    <table class="tableMenu">
+                        <tr>
+                            <td class="auto-style11">Beilage: </td>
+                            <td class="auto-style11">
+                                <asp:Label ID="lbl_sideDishThursday" runat="server"></asp:Label>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Hauptspeise 1: </td>
+                            <td>
+                                <asp:Label ID="lbl_menu1Thursday" runat="server"></asp:Label>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Hauptspeise 2: </td>
+                            <td>
+                                <asp:Label ID="lbl_menu2Thursday" runat="server"></asp:Label>
+                            </td>
+                        </tr>
+                    </table>
+                </td>
+                <td>
+                    <asp:Label ID="lbl_closeFoodExchangeThursday" runat="server"></asp:Label>
+                </td>
+           </tr>
+           <tr>
+                <td class="auto-style1" > 
+                    <asp:Label ID="lbl_dateFriday" runat="server"></asp:Label>
+                </td>
+                <td>
+                    <asp:CheckBox ID="chkBox_foodFriday" runat="server" />
+                </td>
+                <td>
+                    <asp:CheckBox ID="chkBox_foodExchangeFriday" runat="server" />
+                </td>
+                <td>
+                    <table class="tableMenu">
+                        <tr>
+                            <td>Beilage: </td>
+                            <td class="auto-style10">
+                                <asp:Label ID="lbl_sideDishFriday" runat="server"></asp:Label>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Hauptspeise 1: </td>
+                            <td class="auto-style10">
+                                <asp:Label ID="lbl_menu1Friday" runat="server"></asp:Label>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Hauptspeise 2: </td>
+                            <td class="auto-style10">
+                                <asp:Label ID="lbl_menu2Friday" runat="server"></asp:Label>
+                            </td>
+                        </tr>
+                    </table>
+                </td>
+               <td>
+                   <asp:Label ID="lbl_closeFoodExchangeFriday" runat="server"></asp:Label>
+                </td>
+           </tr>
+        </table>
+        <asp:Label runat="server" ID="lbl_Info" ForeColor="Red"></asp:Label>
+    </div>
+</body>
     </form>
 </body>
 </html>
