@@ -114,6 +114,60 @@ namespace MensaBestellung
         protected global::System.Web.UI.WebControls.Label lbl_infoLabel;
 
         /// <summary>
+        /// lbl_monday_date control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lbl_monday_date;
+
+        /// <summary>
+        /// lbl_monday_menuSum control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lbl_monday_menuSum;
+
+        /// <summary>
+        /// lbl_monday_menuSumX control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lbl_monday_menuSumX;
+
+        /// <summary>
+        /// lbl_sideDishWendesday control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lbl_sideDishWendesday;
+
+        /// <summary>
+        /// lbl_menu1Wendesday control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lbl_menu1Wendesday;
+
+        /// <summary>
+        /// lbl_menu2Wendesday control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lbl_menu2Wendesday;
+
+        /// <summary>
         /// CheckBox_monday control.
         /// </summary>
         /// <remarks>
@@ -121,6 +175,60 @@ namespace MensaBestellung
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.CheckBox CheckBox_monday;
+
+        /// <summary>
+        /// lbl_tuesday_date control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lbl_tuesday_date;
+
+        /// <summary>
+        /// lbl_tuesday_menuSum control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lbl_tuesday_menuSum;
+
+        /// <summary>
+        /// lbl_tuesday_menuSumX control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lbl_tuesday_menuSumX;
+
+        /// <summary>
+        /// lbl_sideDishWendesday0 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lbl_sideDishWendesday0;
+
+        /// <summary>
+        /// lbl_menu1Wendesday0 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lbl_menu1Wendesday0;
+
+        /// <summary>
+        /// lbl_menu2Wendesday0 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lbl_menu2Wendesday0;
 
         /// <summary>
         /// CheckBox_tuesday control.
@@ -132,6 +240,60 @@ namespace MensaBestellung
         protected global::System.Web.UI.WebControls.CheckBox CheckBox_tuesday;
 
         /// <summary>
+        /// lbl_wednesday_date control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lbl_wednesday_date;
+
+        /// <summary>
+        /// lbl_wednesday_menuSum control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lbl_wednesday_menuSum;
+
+        /// <summary>
+        /// lbl_wednesday_menuSumX control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lbl_wednesday_menuSumX;
+
+        /// <summary>
+        /// lbl_sideDishWendesday1 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lbl_sideDishWendesday1;
+
+        /// <summary>
+        /// lbl_menu1Wendesday1 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lbl_menu1Wendesday1;
+
+        /// <summary>
+        /// lbl_menu2Wendesday1 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lbl_menu2Wendesday1;
+
+        /// <summary>
         /// CheckBox_wednesday control.
         /// </summary>
         /// <remarks>
@@ -141,6 +303,60 @@ namespace MensaBestellung
         protected global::System.Web.UI.WebControls.CheckBox CheckBox_wednesday;
 
         /// <summary>
+        /// lbl_thursday_date control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lbl_thursday_date;
+
+        /// <summary>
+        /// lbl_thursday_menuSum control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lbl_thursday_menuSum;
+
+        /// <summary>
+        /// lbl_thursday_menuSumX control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lbl_thursday_menuSumX;
+
+        /// <summary>
+        /// lbl_sideDishThursday control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lbl_sideDishThursday;
+
+        /// <summary>
+        /// lbl_menu1Thursday control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lbl_menu1Thursday;
+
+        /// <summary>
+        /// lbl_menu2Thursday control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lbl_menu2Thursday;
+
+        /// <summary>
         /// CheckBox_thursday control.
         /// </summary>
         /// <remarks>
@@ -148,6 +364,60 @@ namespace MensaBestellung
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.CheckBox CheckBox_thursday;
+
+        /// <summary>
+        /// lbl_friday_date control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lbl_friday_date;
+
+        /// <summary>
+        /// lbl_friday_menuSum control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lbl_friday_menuSum;
+
+        /// <summary>
+        /// lbl_friday_menuSumX control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lbl_friday_menuSumX;
+
+        /// <summary>
+        /// lbl_sideDishFriday control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lbl_sideDishFriday;
+
+        /// <summary>
+        /// lbl_menu1Friday control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lbl_menu1Friday;
+
+        /// <summary>
+        /// lbl_menu2Friday control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lbl_menu2Friday;
 
         /// <summary>
         /// CheckBox_friday control.

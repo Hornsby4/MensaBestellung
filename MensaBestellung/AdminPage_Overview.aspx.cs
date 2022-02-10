@@ -1,14 +1,11 @@
-﻿using DataBaseWrapper;
+﻿using AjaxControlToolkit;
+using DataBaseWrapper;
 using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Globalization;
-using System.Linq;
-using System.Web;
 using System.Web.Configuration;
-using System.Web.UI;
 using System.Web.UI.WebControls;
-using AjaxControlToolkit;
 namespace MensaBestellung
 {
     public partial class AdminPage : System.Web.UI.Page
@@ -16,18 +13,23 @@ namespace MensaBestellung
         DataBase db;
         string connStrg = WebConfigurationManager.ConnectionStrings["AppDbInt"].ConnectionString;
         //string connStrg = WebConfigurationManager.ConnectionStrings["AppDbExt"].ConnectionString;
-
+        DateTime selectedWeekMonday;
         protected void Page_Load(object sender, EventArgs e)
         {
-
-            try 
-            { 
-                if(!IsPostBack) FillAdminDDls();
-                
-            }
-            catch(Exception aex)
+            //selectedWeekMonday = default;
+            try
             {
-                lbl_infoLabel.Text = lbl_infoLabel.Text  + "Error: "+aex.Message+ '\n';
+                if (!IsPostBack)
+                {
+                    FillAdminDDls();
+                    if (selectedWeekMonday == default) selectedWeekMonday = DateTime.Now.StartOfWeek(DayOfWeek.Monday);
+                    FillAdminOverviewTable(selectedWeekMonday);
+
+                }
+            }
+            catch (Exception aex)
+            {
+                lbl_infoLabel.Text = lbl_infoLabel.Text + "Error: " + aex.Message + '\n';
             }
 
             
@@ -67,21 +69,27 @@ namespace MensaBestellung
 
         }
 
-        private bool FillAdminOverviewTable()
+        private void FillAdminOverviewTable(DateTime selectedMonday)
         {
-            //db = new DataBase(connStrg);
-            //db.Open();
-            //db.Close();
-
-            //DateTime currentWeekMonday = DateTime.Now.StartOfWeek(DayOfWeek.Monday);
-            //DataTable dt = db.RunQuery($"SELECT * FROM menu WHERE dateOfDay BETWEEN '{currentWeekMonday.ToString("yyyy-MM-dd")}' AND '{currentWeekMonday.AddDays(4).ToString("yyyy-MM-dd")}'");
-
+            db = new DataBase(connStrg);
             
-            //table.DataSource = dt;
+            //selectedWeekMonday = DateTime.Now.StartOfWeek(DayOfWeek.Monday);
+            
+                
+            DataTable dt = db.RunQuery($"SELECT * FROM menu WHERE menuDate BETWEEN '{selectedWeekMonday.ToString("yyyy-MM-dd")}' AND '{selectedWeekMonday.AddDays(4).ToString("yyyy-MM-dd")}'");
+
+            lbl_monday_date.Text = "Mo "+ selectedWeekMonday.ToString("dd.MM.yy");
+            lbl_tuesday_date.Text = "Di "+ selectedWeekMonday.AddDays(1).ToString("dd.MM.yy");
+            lbl_wednesday_date.Text ="Mi "+ selectedWeekMonday.AddDays(2).ToString("dd.MM.yy");
+            lbl_thursday_date.Text ="Do "+ selectedWeekMonday.AddDays(3).ToString("dd.MM.yy");
+            lbl_friday_date.Text ="Fr " + selectedWeekMonday.AddDays(4).ToString("dd.MM.yy");
+
+
+
             //gv_foodExchange.DataBind();
 
 
-            return true;
+
         }
 
         protected void btn_goToUserPage_Click(object sender, EventArgs e)
@@ -152,6 +160,7 @@ namespace MensaBestellung
         }
 
         /// <summary>
+
         /// Creates the chosen dishes if they don't exist in the database
         /// </summary>
         private void AddNewDishes()
@@ -237,6 +246,15 @@ namespace MensaBestellung
             }
 
             return false;
+        }
+
+        protected void btn_nextWeek_Click(object sender, EventArgs e)
+        {
+            //if (selectedWeekMonday == default) selectedWeekMonday = DateTime.Now.StartOfWeek(DayOfWeek.Monday);
+            selectedWeekMonday= selectedWeekMonday.AddDays(7);
+            //FillAdminOverviewTable(selectedWeekMonday);
+            //Server.TransferRequest(Request.Url.AbsolutePath, false);
+            
         }
     }
 
