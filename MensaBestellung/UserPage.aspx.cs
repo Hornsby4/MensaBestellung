@@ -68,23 +68,18 @@ namespace MensaBestellung
 
         private void SetAllFoodExchangeLabels()
         {
-            SetFoodExchangeLabel(lbl_closeFoodExchangeMonday, lbl_dateMonday, chkBox_foodExchangeMonday);
-            SetFoodExchangeLabel(lbl_closeFoodExchangeTuesday, lbl_dateTuesday, chkBox_foodExchangeTuesday);
-            SetFoodExchangeLabel(lbl_closeFoodExchangeWendesday, lbl_dateWendesday, chkBox_foodExchangeWendesday);
-            SetFoodExchangeLabel(lbl_closeFoodExchangeThursday, lbl_dateThursday, chkBox_foodExchangeThursday);
-            SetFoodExchangeLabel(lbl_closeFoodExchangeFriday, lbl_dateFriday, chkBox_foodExchangeFriday);
+            SetFoodExchangeLabel(lbl_closeFoodExchangeMonday, currentWeekMonday, chkBox_foodExchangeMonday);
+            SetFoodExchangeLabel(lbl_closeFoodExchangeTuesday, currentWeekMonday.AddDays(1), chkBox_foodExchangeTuesday);
+            SetFoodExchangeLabel(lbl_closeFoodExchangeWendesday, currentWeekMonday.AddDays(2), chkBox_foodExchangeWendesday);
+            SetFoodExchangeLabel(lbl_closeFoodExchangeThursday, currentWeekMonday.AddDays(3), chkBox_foodExchangeThursday);
+            SetFoodExchangeLabel(lbl_closeFoodExchangeFriday, currentWeekMonday.AddDays(4), chkBox_foodExchangeFriday);
         }
 
-        private void SetFoodExchangeLabel(Label lbl_closeFoodExchange, Label lbl_date, CheckBox chkBox_foodExchange)
+        private void SetFoodExchangeLabel(Label lbl_closeFoodExchange, DateTime date, CheckBox chkBox_foodExchange)
         {
-            if(lbl_date.Text == "")
-            {
-                lbl_closeFoodExchange.Text = "Essensbörse geschlossen.";
-                return;
-            }
+            
             DateTime today = DateTime.Now;
             //DateTime today = Convert.ToDateTime("05.02.2022 09:00:00");
-            DateTime date = Convert.ToDateTime(lbl_date.Text);
             int time = DateTime.Compare(Convert.ToDateTime($"{date.ToString("dd.MM.yyyy")} 13:30:00"), today);
 
             DateTime currentMonday = DateTime.Now.StartOfWeek(DayOfWeek.Monday);
@@ -120,27 +115,27 @@ namespace MensaBestellung
 
         private string GetDateAndDay(DateTime date, out string day)
         {
-            if(date.ToString("yyyy-MM-dd") == lbl_dateMonday.Text)
+            if (date.ToString("yyyy-MM-dd") == currentWeekMonday.ToString("yyyy-MM-dd"))
             {
                 day = "Mo";
                 return Convert.ToDateTime(lbl_dateMonday.Text).ToString("dd.MM.yyyy");
             }
-            if (date.ToString("yyyy-MM-dd") == lbl_dateTuesday.Text)
+            if (date.ToString("yyyy-MM-dd") == currentWeekMonday.AddDays(1).ToString("yyyy-MM-dd"))
             {
                 day = "Di";
                 return Convert.ToDateTime(lbl_dateTuesday.Text).ToString("dd.MM.yyyy");
             }
-            if (date.ToString("yyyy-MM-dd") == lbl_dateWendesday.Text)
+            if (date.ToString("yyyy-MM-dd") == currentWeekMonday.AddDays(2).ToString("yyyy-MM-dd"))
             {
                 day = "Mi";
                 return Convert.ToDateTime(lbl_dateWendesday.Text).ToString("dd.MM.yyyy");
             }
-            if (date.ToString("yyyy-MM-dd") == lbl_dateThursday.Text)
+            if (date.ToString("yyyy-MM-dd") == currentWeekMonday.AddDays(3).ToString("yyyy-MM-dd"))
             {
                 day = "Do";
                 return Convert.ToDateTime(lbl_dateThursday.Text).ToString("dd.MM.yyyy");
             }
-            if (date.ToString("yyyy-MM-dd") == lbl_dateFriday.Text)
+            if (date.ToString("yyyy-MM-dd") == currentWeekMonday.AddDays(4).ToString("yyyy-MM-dd"))
             {
                 day = "Fr";
                 return Convert.ToDateTime(lbl_dateFriday.Text).ToString("dd.MM.yyyy");
@@ -242,7 +237,6 @@ namespace MensaBestellung
                             chkBox_foodFriday.Enabled = true;
                         }
                     }
-
                 }
 
                 return 0;
@@ -252,39 +246,6 @@ namespace MensaBestellung
                 lbl_Info.Text = ex.Message;
                 return -1;
             }
-        }
-
-        private void EnableOrders(List<int> mensaOpen)
-        {
-            if(mensaOpen[0] == 1)
-            {
-                chkBox_foodMonday.Enabled = true;
-            }
-            if (mensaOpen[1] == 1)
-            {
-                chkBox_foodTuesday.Enabled = true;
-            }
-            if (mensaOpen[2] == 1)
-            {
-                chkBox_foodWendesday.Enabled = true;
-            }
-            if (mensaOpen[3] == 1)
-            {
-                chkBox_foodThursday.Enabled = true;
-            }
-            if (mensaOpen[4] == 1)
-            {
-                chkBox_foodFriday.Enabled = true;
-            }
-        }
-
-        private void SetDatesZero()
-        {
-            lbl_dateMonday.Text = "";
-            lbl_dateTuesday.Text = "";
-            lbl_dateWendesday.Text = "";
-            lbl_dateThursday.Text = "";
-            lbl_dateFriday.Text = "";
         }
 
         private void AllowFoodExchange(DataTable dt)
@@ -387,14 +348,6 @@ namespace MensaBestellung
             chkBox_foodWendesday.Enabled = false;
             chkBox_foodThursday.Enabled = false;
             chkBox_foodFriday.Enabled = false;
-        }
-        private void EnableCheckBoxesFood()
-        {
-            chkBox_foodMonday.Enabled = true;
-            chkBox_foodTuesday.Enabled = true;
-            chkBox_foodWendesday.Enabled = true;
-            chkBox_foodThursday.Enabled = true;
-            chkBox_foodFriday.Enabled = true;
         }
         private void DisableCheckBoxFoodExchange()
         {
