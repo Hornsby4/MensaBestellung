@@ -164,30 +164,35 @@ namespace MensaBestellung
 
         private void SetDishesForWeek(DateTime selectedMonday)
         {
+            
             DataTable menuDishes = db.RunQuery("SELECT main1.description AS maindish1, main2.description AS maindish2, side.description AS sidedish " +
                             "FROM menu " +
-                            "right JOIN maindish main1 " +
+                            "left JOIN maindish main1 " +
                             "ON menu.mainDish1 = main1.dish_id " +
-                            "right JOIN maindish main2 " +
+                            "left JOIN maindish main2 " +
                             "ON menu.mainDish2 = main2.dish_id " +
-                            "right JOIN sidedish side " +
+                            "left JOIN sidedish side " +
                             "ON menu.sidedish = side.dish_id " +
                             $"WHERE menuDate = '{selectedMonday.ToString("yyyy-MM-dd")}'");
             if (menuDishes.Rows.Count != 0)
             {
+                
                 lbl_dish1Monday.Text = menuDishes.Rows[0]["maindish1"].ToString();
                 lbl_dish2Monday.Text = menuDishes.Rows[0]["maindish2"].ToString();
                 lbl_sideDishMonday.Text = menuDishes.Rows[0]["sidedish"].ToString();
             }
 
+            if (menuDishes.Rows.Count != 0) menuDishes.Rows.Remove(menuDishes.Rows[0]);
+            
 
+           
             menuDishes = db.RunQuery("SELECT main1.description AS maindish1, main2.description AS maindish2, side.description AS sidedish " +
                 "FROM menu " +
-                "right JOIN maindish main1 " +
+                "left JOIN maindish main1 " +
                 "ON menu.mainDish1 = main1.dish_id " +
-                "right JOIN maindish main2 " +
+                "left JOIN maindish main2 " +
                 "ON menu.mainDish2 = main2.dish_id " +
-                "right JOIN sidedish side " +
+                "left JOIN sidedish side " +
                 "ON menu.sidedish = side.dish_id " +
                 $"WHERE menuDate = '{selectedMonday.AddDays(1).ToString("yyyy-MM-dd")}'");
             if (menuDishes.Rows.Count != 0)
@@ -196,14 +201,17 @@ namespace MensaBestellung
                 lbl_dish2Tuesday.Text = menuDishes.Rows[0]["maindish2"].ToString();
                 lbl_sideDishTuesday.Text = menuDishes.Rows[0]["sidedish"].ToString();
             }
+            if (menuDishes.Rows.Count != 0) menuDishes.Rows.Remove(menuDishes.Rows[0]);
+
+
 
             menuDishes = db.RunQuery("SELECT main1.description AS maindish1, main2.description AS maindish2, side.description AS sidedish " +
                 "FROM menu " +
-                "right JOIN maindish main1 " +
+                "left JOIN maindish main1 " +
                 "ON menu.mainDish1 = main1.dish_id " +
-                "right JOIN maindish main2 " +
+                "left JOIN maindish main2 " +
                 "ON menu.mainDish2 = main2.dish_id " +
-                "right JOIN sidedish side " +
+                "left JOIN sidedish side " +
                 "ON menu.sidedish = side.dish_id " +
                 $"WHERE menuDate = '{selectedMonday.AddDays(2).ToString("yyyy-MM-dd")}'");
             if (menuDishes.Rows.Count != 0)
@@ -212,14 +220,17 @@ namespace MensaBestellung
                 lbl_dish2Wednesday.Text = menuDishes.Rows[0]["maindish2"].ToString();
                 lbl_sideDishWednesday.Text = menuDishes.Rows[0]["sidedish"].ToString();
             }
+            if (menuDishes.Rows.Count != 0) menuDishes.Rows.Remove(menuDishes.Rows[0]);
+
+
 
             menuDishes = db.RunQuery("SELECT main1.description AS maindish1, main2.description AS maindish2, side.description AS sidedish " +
                 "FROM menu " +
-                "right JOIN maindish main1 " +
+                "left JOIN maindish main1 " +
                 "ON menu.mainDish1 = main1.dish_id " +
-                "right JOIN maindish main2 " +
+                "left JOIN maindish main2 " +
                 "ON menu.mainDish2 = main2.dish_id " +
-                "right JOIN sidedish side " +
+                "left JOIN sidedish side " +
                 "ON menu.sidedish = side.dish_id " +
                 $"WHERE menuDate = '{selectedMonday.AddDays(3).ToString("yyyy-MM-dd")}'");
             if (menuDishes.Rows.Count != 0)
@@ -228,14 +239,16 @@ namespace MensaBestellung
                 lbl_dish2Thursday.Text = menuDishes.Rows[0]["maindish2"].ToString();
                 lbl_sideDishThursday.Text = menuDishes.Rows[0]["sidedish"].ToString();
             }
+            if (menuDishes.Rows.Count != 0) menuDishes.Rows.Remove(menuDishes.Rows[0]);
+
 
             menuDishes = db.RunQuery("SELECT main1.description AS maindish1, main2.description AS maindish2, side.description AS sidedish " +
                 "FROM menu " +
-                "right JOIN maindish main1 " +
+                "left JOIN maindish main1 " +
                 "ON menu.mainDish1 = main1.dish_id " +
-                "right JOIN maindish main2 " +
+                "left JOIN maindish main2 " +
                 "ON menu.mainDish2 = main2.dish_id " +
-                "right JOIN sidedish side " +
+                "left JOIN sidedish side " +
                 "ON menu.sidedish = side.dish_id " +
                 $"WHERE menuDate = '{selectedMonday.AddDays(4).ToString("yyyy-MM-dd")}'");
             if (menuDishes.Rows.Count != 0)
@@ -244,6 +257,7 @@ namespace MensaBestellung
                 lbl_dish2Friday.Text = menuDishes.Rows[0]["maindish2"].ToString();
                 lbl_sideDishFriday.Text = menuDishes.Rows[0]["sidedish"].ToString();
             }
+            
         }
 
         private void SetExchangeEndDates()

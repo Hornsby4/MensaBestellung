@@ -126,6 +126,34 @@
             height: 21px;
         }
 
+        .auto-style73 {
+            width: 210px;
+            height: 35px;
+        }
+        .auto-style74 {
+            height: 35px;
+            width: 74px;
+        }
+        .auto-style75 {
+            height: 35px;
+            width: 86px;
+        }
+        .auto-style76 {
+            height: 35px;
+            width: 335px;
+        }
+        .auto-style77 {
+            height: 35px;
+            width: 46px;
+        }
+        .auto-style78 {
+            height: 35px;
+            width: 382px;
+        }
+        .auto-style79 {
+            height: 35px;
+        }
+
     </style>
 </head>
 <body>
@@ -158,7 +186,7 @@
     </div>
     <div class="auto-style70">
         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br />
-        <table id="tbl_weekTable" class="auto-style45">
+        <table id="tbl_weekTable" class="auto-style45" border="1">
             <tr>
                 <td class="auto-style46" rowspan="1">Datum</td>
                 <td class="auto-style46">ΣBestellte Menüs</td>
@@ -171,10 +199,10 @@
                     freigeben</td>
             </tr>
             <tr>
-                <td class="auto-style31" headers="Datum;Bestellete">&nbsp;<asp:Label ID="lbl_monday_date" runat="server" /></td>
-                <td class="auto-style32"><asp:Label ID="lbl_monday_menuSum" runat="server" /></td>
-                <td class="auto-style33"><asp:Label ID="lbl_monday_menuSumX" runat="server" /></td>
-                <td class="auto-style34">
+                <td class="auto-style73" headers="Datum;Bestellete">&nbsp;<asp:Label ID="lbl_monday_date" runat="server" /></td>
+                <td class="auto-style74"><asp:Label ID="lbl_monday_menuSum" runat="server" /></td>
+                <td class="auto-style75"><asp:Label ID="lbl_monday_menuSumX" runat="server" /></td>
+                <td class="auto-style76">
                          <table class="tableMenu">
                             <tr>
                                 <td class="auto-style15">Beilage: </td>
@@ -196,11 +224,11 @@
                             </tr>
                         </table>
                 </td>
-                <td class="auto-style35">5,60</td>
-                <td class="auto-style48">
+                <td class="auto-style77">5,60</td>
+                <td class="auto-style78">
                                     <asp:Label ID="lbl_MonExchangeEndDate" runat="server"></asp:Label>
                                 </td>
-                <td class="auto-style37">
+                <td class="auto-style79">
                     <asp:CheckBox ID="CheckBox_monday" runat="server" />
                 </td>
             </tr>
