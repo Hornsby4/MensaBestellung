@@ -22,6 +22,10 @@ namespace MensaBestellung
         {
             try
             {
+                if (Session["UserID"] == null)
+                {
+                    btn_close_Click(sender, e);
+                }
 
                 db = new DataBase(connStrg);
                 db.Open();
@@ -426,11 +430,15 @@ namespace MensaBestellung
 
         protected void btn_saveOrder_Click(object sender, EventArgs e)
         {
+            DialogBox dialogBox = (DialogBox)LoadControl("DialogBox.ascx");
+            dialogBox.Title = "Speichern";
             SaveOrderIntoDb(lbl_dateMonday.Text, chkBox_foodExchangeMonday, chkBox_foodMonday);
             SaveOrderIntoDb(lbl_dateTuesday.Text, chkBox_foodExchangeTuesday, chkBox_foodTuesday);
             SaveOrderIntoDb(lbl_dateWendesday.Text, chkBox_foodExchangeWendesday, chkBox_foodWendesday);
             SaveOrderIntoDb(lbl_dateThursday.Text, chkBox_foodExchangeThursday, chkBox_foodThursday);
             SaveOrderIntoDb(lbl_dateFriday.Text, chkBox_foodExchangeFriday, chkBox_foodFriday);
+            dialogBox.description("Ihre Bestellung wurde gespeichert!");
+            form1.Controls.Add(dialogBox);
         }
 
         private void SaveOrderIntoDb(string date, CheckBox chkBox_foodExchange, CheckBox chkBox_menuOfTheDay)
@@ -451,14 +459,12 @@ namespace MensaBestellung
                     {
                         db.RunNonQuery($"UPDATE user_orders_menu SET foodExchange = {isFoodExchangeEnabled} " +
                             $"WHERE menuDate = '{date}' AND user_Id = {userId};");
-                        lbl_Info.Text = "Ihre Bestellungen wurden geupdated";
                     }
                 }
                 if (updateOrInsert == false && chkBox_menuOfTheDay.Enabled == true && chkBox_menuOfTheDay.Checked == true)
                 {
                     db.RunNonQuery($"INSERT INTO user_orders_menu VALUES " +
                         $"('{Convert.ToDateTime(date).ToString("yyyy-MM-dd")}', '{userId}', {isFoodExchangeEnabled})");
-                    lbl_Info.Text = "Ihre Bestellungen wurden gespeichert.";
                 }
                 if(updateOrInsert == true && chkBox_menuOfTheDay.Checked == false)
                 {
@@ -467,7 +473,6 @@ namespace MensaBestellung
                     {
                         db.RunNonQuery($"DELETE FROM user_orders_menu WHERE user_id = {userId} AND menuDate = '{date}'");
                     }
-                    lbl_Info.Text = "Ihre Bestellung wurde gelöscht";
                 }
             }
             catch (Exception ex)

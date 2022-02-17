@@ -23,7 +23,6 @@ namespace MensaBestellung
         {
             try
             {
-
                 if (!Page.IsPostBack)
                 {
                     FillGV();
@@ -45,7 +44,7 @@ namespace MensaBestellung
                 CheckBox chk = (CheckBox)row.FindControl("buy");
                 foreach (DataRow menuDate in dtOrders.Rows)
                 {
-                    if (row.Cells[0].Text == ((DateTime)menuDate[0]).ToString("dd.MM.yyyy"))
+                    if (row.Cells[0].Text.Split(' ')[1] == ((DateTime)menuDate[0]).ToString("dd.MM.yyyy"))
                     {
                         chk.Enabled = false;
                     }
@@ -112,7 +111,7 @@ namespace MensaBestellung
                     if (chk != null && chk.Checked)
                     {
                         int uIDtoBuy = Convert.ToInt32(db.RunQueryScalar($"SELECT user_id FROM user WHERE firstname = '{row.Cells[3].Text.Split(' ')[0]}' AND lastname = '{row.Cells[3].Text.Split(' ')[1]}'"));
-                        cart.Add($"{row.Cells[0].Text};{uIDtoBuy}");
+                        cart.Add($"{row.Cells[0].Text.Split(' ')[1]};{uIDtoBuy}");
                     }
                 }
                 bool execute = false;

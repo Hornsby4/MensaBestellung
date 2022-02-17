@@ -33,7 +33,7 @@
 &nbsp;<asp:GridView ID="gv_foodExchange" runat="server" CellPadding="4" ForeColor="#333333" Width="841px" AutoGenerateColumns="False">
             <AlternatingRowStyle BackColor="White" />
             <Columns>
-                <asp:BoundField DataField="menuDate" HeaderText="Datum" DataFormatString="{0:d}" HtmlEncode="false"/>
+                <asp:BoundField DataField="menuDate" HeaderText="Datum" DataFormatString="{0:ddd dd.MM.yyyy}" HtmlEncode="false"/>
                 <asp:templatefield HeaderText="Essen nachkaufen" >
                 <itemtemplate>
                     <asp:checkbox ID="buy" runat="server" OnCheckedChanged="SelectCheckBox_OnCheckedChanged" AutoPostBack="true"/>
