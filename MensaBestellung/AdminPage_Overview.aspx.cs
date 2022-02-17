@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Data;
 using System.Globalization;
 using System.Web.Configuration;
+using System.Web.Security;
 using System.Web.UI.WebControls;
 namespace MensaBestellung
 {
@@ -23,9 +24,11 @@ namespace MensaBestellung
                 {
                     FillAdminDDls();
                     if (selectedWeekMonday == default) selectedWeekMonday = DateTime.Now.StartOfWeek(DayOfWeek.Monday);
+                    ViewState["selectedWeek"] = selectedWeekMonday;
                     FillAdminOverviewTable(selectedWeekMonday);
 
                 }
+                selectedWeekMonday = (DateTime)ViewState["selectedWeek"];
             }
             catch (Exception aex)
             {
@@ -72,24 +75,198 @@ namespace MensaBestellung
         private void FillAdminOverviewTable(DateTime selectedMonday)
         {
             db = new DataBase(connStrg);
-            
-            //selectedWeekMonday = DateTime.Now.StartOfWeek(DayOfWeek.Monday);
-            
-                
-            DataTable dt = db.RunQuery($"SELECT * FROM menu WHERE menuDate BETWEEN '{selectedWeekMonday.ToString("yyyy-MM-dd")}' AND '{selectedWeekMonday.AddDays(4).ToString("yyyy-MM-dd")}'");
-
-            lbl_monday_date.Text = "Mo "+ selectedWeekMonday.ToString("dd.MM.yy");
-            lbl_tuesday_date.Text = "Di "+ selectedWeekMonday.AddDays(1).ToString("dd.MM.yy");
-            lbl_wednesday_date.Text ="Mi "+ selectedWeekMonday.AddDays(2).ToString("dd.MM.yy");
-            lbl_thursday_date.Text ="Do "+ selectedWeekMonday.AddDays(3).ToString("dd.MM.yy");
-            lbl_friday_date.Text ="Fr " + selectedWeekMonday.AddDays(4).ToString("dd.MM.yy");
+            DataTable dt = db.RunQuery($"SELECT * FROM menu WHERE menuDate BETWEEN '{selectedMonday.ToString("yyyy-MM-dd")}' AND '{selectedMonday.AddDays(4).ToString("yyyy-MM-dd")}'");
+            FlushMenus();
+            FlushCheckBoxes();
+            SetDates(selectedMonday);
+            SetMenuSums(selectedMonday);
+            SetDishesForWeek(selectedMonday);
+            SetExchangeEndDates();
 
 
+        }
 
-            //gv_foodExchange.DataBind();
+        private void FlushCheckBoxes()
+        {
+            List<CheckBox> checkBoxList=new List<CheckBox>();
+            checkBoxList.Add(CheckBox_monday);
+            checkBoxList.Add(CheckBox_tuesday);
+            checkBoxList.Add(CheckBox_wednesday);
+            checkBoxList.Add(CheckBox_thursday);
+            checkBoxList.Add(CheckBox_friday);
+
+            foreach(CheckBox checkBox in checkBoxList)
+            {
+                checkBox.Checked = false;
+            }
+        }
+
+        private void SetDates(DateTime selectedMonday)
+        {
+            //Fills dates
+            lbl_monday_date.Text = "Mo " + selectedMonday.ToString("dd.MM.yy");
+            lbl_tuesday_date.Text = "Di " + selectedMonday.AddDays(1).ToString("dd.MM.yy");
+            lbl_wednesday_date.Text = "Mi " + selectedMonday.AddDays(2).ToString("dd.MM.yy");
+            lbl_thursday_date.Text = "Do " + selectedMonday.AddDays(3).ToString("dd.MM.yy");
+            lbl_friday_date.Text = "Fr " + selectedMonday.AddDays(4).ToString("dd.MM.yy");
+        }
+
+        private void SetMenuSums(DateTime selectedMonday)
+        {
+            //Fills menu Sums
+            lbl_monday_menuSum.Text = Convert.ToString(db.RunQueryScalar($"SELECT count(menuDate)" +
+                $" FROM user_orders_menu " +
+                $"WHERE menuDate = '{selectedMonday.ToString("yyyy-MM-dd")}'"));
+
+            lbl_tuesday_menuSum.Text = Convert.ToString(db.RunQueryScalar($"SELECT count(menuDate)" +
+                $" FROM user_orders_menu " +
+                $"WHERE menuDate = '{selectedMonday.AddDays(1).ToString("yyyy-MM-dd")}'"));
+
+            lbl_wednesday_menuSum.Text = Convert.ToString(db.RunQueryScalar($"SELECT count(menuDate)" +
+                $" FROM user_orders_menu " +
+                $"WHERE menuDate = '{selectedMonday.AddDays(2).ToString("yyyy-MM-dd")}'"));
+
+            lbl_thursday_menuSum.Text = Convert.ToString(db.RunQueryScalar($"SELECT count(menuDate)" +
+                $" FROM user_orders_menu " +
+                $"WHERE menuDate = '{selectedMonday.AddDays(3).ToString("yyyy-MM-dd")}'"));
+
+            lbl_friday_menuSum.Text = Convert.ToString(db.RunQueryScalar($"SELECT count(menuDate)" +
+                $" FROM user_orders_menu " +
+                $"WHERE menuDate = '{selectedMonday.AddDays(4).ToString("yyyy-MM-dd")}'"));
 
 
+            //Fills menu sums for foodexchange
+            lbl_monday_menuSumX.Text = Convert.ToString(db.RunQueryScalar($"SELECT COUNT(menuDate) " +
+                $"FROM user_orders_menu " +
+                $"WHERE menuDate = '{selectedMonday.ToString("yyyy-MM-dd")}' " +
+                $"AND FoodExchange = 1"));
 
+            lbl_tuesday_menuSumX.Text = Convert.ToString(db.RunQueryScalar($"SELECT COUNT(menuDate) " +
+                $"FROM user_orders_menu " +
+                $"WHERE menuDate = '{selectedMonday.AddDays(1).ToString("yyyy-MM-dd")}' " +
+                $"AND FoodExchange = 1"));
+
+            lbl_wednesday_menuSumX.Text = Convert.ToString(db.RunQueryScalar($"SELECT COUNT(menuDate) " +
+                $"FROM user_orders_menu " +
+                $"WHERE menuDate = '{selectedMonday.AddDays(2).ToString("yyyy-MM-dd")}' " +
+                $"AND FoodExchange = 1"));
+
+            lbl_thursday_menuSumX.Text = Convert.ToString(db.RunQueryScalar($"SELECT COUNT(menuDate) " +
+                $"FROM user_orders_menu " +
+                $"WHERE menuDate = '{selectedMonday.AddDays(3).ToString("yyyy-MM-dd")}' " +
+                $"AND FoodExchange = 1"));
+
+            lbl_friday_menuSumX.Text = Convert.ToString(db.RunQueryScalar($"SELECT COUNT(menuDate) " +
+                $"FROM user_orders_menu " +
+                $"WHERE menuDate = '{selectedMonday.AddDays(4).ToString("yyyy-MM-dd")}' " +
+                $"AND FoodExchange = 1"));
+        }
+
+        private void SetDishesForWeek(DateTime selectedMonday)
+        {
+            DataTable menuDishes = db.RunQuery("SELECT main1.description AS maindish1, main2.description AS maindish2, side.description AS sidedish " +
+                            "FROM menu " +
+                            "right JOIN maindish main1 " +
+                            "ON menu.mainDish1 = main1.dish_id " +
+                            "right JOIN maindish main2 " +
+                            "ON menu.mainDish2 = main2.dish_id " +
+                            "right JOIN sidedish side " +
+                            "ON menu.sidedish = side.dish_id " +
+                            $"WHERE menuDate = '{selectedMonday.ToString("yyyy-MM-dd")}'");
+            if (menuDishes.Rows.Count != 0)
+            {
+                lbl_dish1Monday.Text = menuDishes.Rows[0]["maindish1"].ToString();
+                lbl_dish2Monday.Text = menuDishes.Rows[0]["maindish2"].ToString();
+                lbl_sideDishMonday.Text = menuDishes.Rows[0]["sidedish"].ToString();
+            }
+
+
+            menuDishes = db.RunQuery("SELECT main1.description AS maindish1, main2.description AS maindish2, side.description AS sidedish " +
+                "FROM menu " +
+                "right JOIN maindish main1 " +
+                "ON menu.mainDish1 = main1.dish_id " +
+                "right JOIN maindish main2 " +
+                "ON menu.mainDish2 = main2.dish_id " +
+                "right JOIN sidedish side " +
+                "ON menu.sidedish = side.dish_id " +
+                $"WHERE menuDate = '{selectedMonday.AddDays(1).ToString("yyyy-MM-dd")}'");
+            if (menuDishes.Rows.Count != 0)
+            {
+                lbl_dish1Tuesday.Text = menuDishes.Rows[0]["maindish1"].ToString();
+                lbl_dish2Tuesday.Text = menuDishes.Rows[0]["maindish2"].ToString();
+                lbl_sideDishTuesday.Text = menuDishes.Rows[0]["sidedish"].ToString();
+            }
+
+            menuDishes = db.RunQuery("SELECT main1.description AS maindish1, main2.description AS maindish2, side.description AS sidedish " +
+                "FROM menu " +
+                "right JOIN maindish main1 " +
+                "ON menu.mainDish1 = main1.dish_id " +
+                "right JOIN maindish main2 " +
+                "ON menu.mainDish2 = main2.dish_id " +
+                "right JOIN sidedish side " +
+                "ON menu.sidedish = side.dish_id " +
+                $"WHERE menuDate = '{selectedMonday.AddDays(2).ToString("yyyy-MM-dd")}'");
+            if (menuDishes.Rows.Count != 0)
+            {
+                lbl_dish1Wednesday.Text = menuDishes.Rows[0]["maindish1"].ToString();
+                lbl_dish2Wednesday.Text = menuDishes.Rows[0]["maindish2"].ToString();
+                lbl_sideDishWednesday.Text = menuDishes.Rows[0]["sidedish"].ToString();
+            }
+
+            menuDishes = db.RunQuery("SELECT main1.description AS maindish1, main2.description AS maindish2, side.description AS sidedish " +
+                "FROM menu " +
+                "right JOIN maindish main1 " +
+                "ON menu.mainDish1 = main1.dish_id " +
+                "right JOIN maindish main2 " +
+                "ON menu.mainDish2 = main2.dish_id " +
+                "right JOIN sidedish side " +
+                "ON menu.sidedish = side.dish_id " +
+                $"WHERE menuDate = '{selectedMonday.AddDays(3).ToString("yyyy-MM-dd")}'");
+            if (menuDishes.Rows.Count != 0)
+            {
+                lbl_dish1Thursday.Text = menuDishes.Rows[0]["maindish1"].ToString();
+                lbl_dish2Thursday.Text = menuDishes.Rows[0]["maindish2"].ToString();
+                lbl_sideDishThursday.Text = menuDishes.Rows[0]["sidedish"].ToString();
+            }
+
+            menuDishes = db.RunQuery("SELECT main1.description AS maindish1, main2.description AS maindish2, side.description AS sidedish " +
+                "FROM menu " +
+                "right JOIN maindish main1 " +
+                "ON menu.mainDish1 = main1.dish_id " +
+                "right JOIN maindish main2 " +
+                "ON menu.mainDish2 = main2.dish_id " +
+                "right JOIN sidedish side " +
+                "ON menu.sidedish = side.dish_id " +
+                $"WHERE menuDate = '{selectedMonday.AddDays(4).ToString("yyyy-MM-dd")}'");
+            if (menuDishes.Rows.Count != 0)
+            {
+                lbl_dish1Friday.Text = menuDishes.Rows[0]["maindish1"].ToString();
+                lbl_dish2Friday.Text = menuDishes.Rows[0]["maindish2"].ToString();
+                lbl_sideDishFriday.Text = menuDishes.Rows[0]["sidedish"].ToString();
+            }
+        }
+
+        private void SetExchangeEndDates()
+        {
+            int compareDates = DateTime.Compare(DateTime.Now, Convert.ToDateTime($"{lbl_monday_date.Text} 13:30:00").AddDays(-7));
+            if (compareDates != 1) lbl_MonExchangeEndDate.Text = Convert.ToDateTime($"{lbl_monday_date.Text} 13:30:00").AddDays(-7).ToString("dd.MM.yyyy  HH:mm");
+            else lbl_MonExchangeEndDate.Text = "Essensbörse geschlossen";
+
+            compareDates = DateTime.Compare(DateTime.Now, Convert.ToDateTime($"{lbl_tuesday_date.Text} 13:30:00").AddDays(-7));
+            if (compareDates != 1) lbl_TueExchangeEndDate.Text = Convert.ToDateTime($"{lbl_tuesday_date.Text} 13:30:00").AddDays(-7).ToString("dd.MM.yyyy  HH:mm");
+            else lbl_TueExchangeEndDate.Text = "Essensbörse geschlossen";
+
+            compareDates = DateTime.Compare(DateTime.Now, Convert.ToDateTime($"{lbl_wednesday_date.Text} 13:30:00").AddDays(-7));
+            if (compareDates != 1) lbl_WedExchangeEndDate.Text = Convert.ToDateTime($"{lbl_wednesday_date.Text} 13:30:00").AddDays(-7).ToString("dd.MM.yyyy  HH:mm");
+            else lbl_WedExchangeEndDate.Text = "Essensbörse geschlossen";
+
+            compareDates = DateTime.Compare(DateTime.Now, Convert.ToDateTime($"{lbl_thursday_date.Text} 13:30:00").AddDays(-7));
+            if (compareDates != 1) lbl_ThuExchangeEndDate.Text = Convert.ToDateTime($"{lbl_thursday_date.Text} 13:30:00").AddDays(-7).ToString("dd.MM.yyyy  HH:mm");
+            else lbl_ThuExchangeEndDate.Text = "Essensbörse geschlossen";
+
+            compareDates = DateTime.Compare(DateTime.Now, Convert.ToDateTime($"{lbl_friday_date.Text} 13:30:00").AddDays(-7));
+            if (compareDates != 1) lbl_FriExchangeEndDate.Text = Convert.ToDateTime($"{lbl_friday_date.Text} 13:30:00").AddDays(-7).ToString("dd.MM.yyyy  HH:mm");
+            else lbl_FriExchangeEndDate.Text = "Essensbörse geschlossen";
         }
 
         protected void btn_goToUserPage_Click(object sender, EventArgs e)
@@ -110,7 +287,7 @@ namespace MensaBestellung
                 CheckIfDateIsOk(txt_datePicker.Text);
                 AddNewDishes();
                 SaveMenu();
-                
+                FillAdminOverviewTable(selectedWeekMonday);
 
             }
             catch (Exception ex)
@@ -252,9 +429,103 @@ namespace MensaBestellung
         {
             //if (selectedWeekMonday == default) selectedWeekMonday = DateTime.Now.StartOfWeek(DayOfWeek.Monday);
             selectedWeekMonday= selectedWeekMonday.AddDays(7);
-            //FillAdminOverviewTable(selectedWeekMonday);
+            ViewState["selectedWeek"] = selectedWeekMonday;          
+            FillAdminOverviewTable(selectedWeekMonday);
             //Server.TransferRequest(Request.Url.AbsolutePath, false);
+
+        }
+
+        private void FlushMenus()
+        {
+            List<Label> menuLabels = new List<Label>();
+
+            menuLabels.Add(lbl_dish1Monday);
+            menuLabels.Add(lbl_dish2Monday);
+            menuLabels.Add(lbl_sideDishMonday);
+
+            menuLabels.Add(lbl_dish1Tuesday);
+            menuLabels.Add(lbl_dish2Tuesday);
+            menuLabels.Add(lbl_sideDishTuesday);
+
+            menuLabels.Add(lbl_dish1Wednesday);
+            menuLabels.Add(lbl_dish2Wednesday);
+            menuLabels.Add(lbl_sideDishWednesday);
+
+            menuLabels.Add(lbl_dish1Thursday);
+            menuLabels.Add(lbl_dish2Thursday);
+            menuLabels.Add(lbl_sideDishThursday);
+
+            menuLabels.Add(lbl_dish1Friday);
+            menuLabels.Add(lbl_dish2Friday);
+            menuLabels.Add(lbl_sideDishFriday);
+
+
+            foreach(Label lable in menuLabels)
+            {
+                lable.Text = "";
+            }
+        }
+
+        protected void btn_lastWeek_Click(object sender, EventArgs e)
+        {
+            selectedWeekMonday = selectedWeekMonday.AddDays(-7);
+            ViewState["selectedWeek"] = selectedWeekMonday;
+            FillAdminOverviewTable(selectedWeekMonday);
+        }
+
+        protected void btn_deleteSelected_Click(object sender, EventArgs e)
+        {
+            db = new DataBase(connStrg);
+            int deletedDates = 0;
+            if(CheckBox_monday.Checked)
+            {
+                deletedDates+= DeleteDate(selectedWeekMonday);
+
+            }
+            if(CheckBox_tuesday.Checked)
+            {
+                deletedDates += DeleteDate(selectedWeekMonday.AddDays(1));
+
+            }
+            if(CheckBox_wednesday.Checked)
+            {
+                deletedDates += DeleteDate(selectedWeekMonday.AddDays(2));
+            }
+            if(CheckBox_thursday.Checked)
+            {
+                deletedDates += DeleteDate(selectedWeekMonday.AddDays(3));
+
+            }
+            if(CheckBox_friday.Checked)
+            {
+                deletedDates += DeleteDate(selectedWeekMonday.AddDays(4));
+            }
+
+            lbl_infoLabel.Text = $"{deletedDates} Menütage wurden gelöscht.";
+
+            FillAdminOverviewTable(selectedWeekMonday);
             
+        }
+
+
+        /// <summary>
+        /// Deletes a date from the DB
+        /// Returns the affected Rows...
+        /// 1=successful delete
+        /// 0=unsuccessful
+        /// </summary>
+        /// <param name="dateToDelete"></param>
+        /// <returns></returns>
+        private int DeleteDate(DateTime dateToDelete)
+        {
+            int affectedRows=db.RunNonQuery($"DELETE FROM menu WHERE menuDate = '{dateToDelete.ToString("yyyy-MM-dd")}'");
+            return affectedRows;
+        }
+
+        protected void btn_close_Click(object sender, EventArgs e)
+        {
+            FormsAuthentication.SignOut();
+            Response.Redirect("SignIn.aspx");
         }
     }
 

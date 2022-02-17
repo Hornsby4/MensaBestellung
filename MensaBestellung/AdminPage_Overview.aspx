@@ -85,30 +85,30 @@
         }
         .auto-style63 {
             width: 210px;
-            height: 35px;
+            height: 38px;
         }
         .auto-style64 {
-            height: 35px;
+            height: 38px;
             width: 74px;
         }
         .auto-style65 {
-            height: 35px;
+            height: 38px;
             width: 86px;
         }
         .auto-style66 {
-            height: 35px;
+            height: 38px;
             width: 335px;
         }
         .auto-style67 {
-            height: 35px;
+            height: 38px;
             width: 46px;
         }
         .auto-style68 {
-            height: 35px;
+            height: 38px;
             width: 382px;
         }
         .auto-style69 {
-            height: 35px;
+            height: 38px;
         }
         .auto-style70 {
             position: absolute;
@@ -116,6 +116,14 @@
             top: 50px;
             bottom: -102px;
             right: 10px;
+        }
+
+        .auto-style71 {
+            height: 21px;
+        }
+        .auto-style72 {
+            width: 199px;
+            height: 21px;
         }
 
     </style>
@@ -137,25 +145,19 @@
         <br />
         <asp:Button class="Button" ID="btn_nextWeek" runat="server" Text="Nächste Woche" OnClick="btn_nextWeek_Click" />
         <br />
-        <asp:Button class="Button" ID="btn_lastWeek" runat="server" Text="Vorherige Woche" />
+        <asp:Button class="Button" ID="btn_lastWeek" runat="server" Text="Vorherige Woche" OnClick="btn_lastWeek_Click" />
         <br />
-        <asp:Button class="Button" ID="btn_saveChanges" runat="server" Text="Ausgewählte Löschen" BackColor="#00CC66" />
+        <asp:Button class="Button" ID="btn_deleteSelected" runat="server" Text="Ausgewählte Löschen" BackColor="#00CC66" OnClick="btn_deleteSelected_Click" />
         <br />
-        <asp:Button class="Button" ID="btn_throwAwayChanges" runat="server" Text="Änderungen verwerfen" OnClick="btn_throwAwayChanges_Click"/>
         <br />
-        <asp:Button class="Button" ID="btn_buyMoreFood" runat="server" Text="Mahlzeiten anlegen" />
         <br />
         <br />
         <asp:Button class="Button" ID="btn_goToUserPage" runat="server" Text="Zur Bestellseite" OnClick="btn_goToUserPage_Click" />
         <br />
-        <asp:Button class="Button" ID="btn_close" runat="server" Text="Beenden" />
+        <asp:Button class="Button" ID="btn_close" runat="server" Text="Beenden" OnClick="btn_close_Click" />
     </div>
     <div class="auto-style70">
-        <br />
-        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-        <asp:Label ID="lbl_infoLabel" runat="server" ForeColor="#CC0000"></asp:Label>
-        <br />
-        <br />
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br />
         <table id="tbl_weekTable" class="auto-style45">
             <tr>
                 <td class="auto-style46" rowspan="1">Datum</td>
@@ -177,25 +179,27 @@
                             <tr>
                                 <td class="auto-style15">Beilage: </td>
                                 <td class="auto-style62">
-                                    <asp:Label ID="lbl_sideDishWendesday" runat="server"></asp:Label>
+                                    <asp:Label ID="lbl_sideDishMonday" runat="server"></asp:Label>
                                 </td>
                             </tr>
                             <tr>
                                 <td>Hauptspeise 1: </td>
                                 <td class="auto-style62">
-                                    <asp:Label ID="lbl_menu1Wendesday" runat="server"></asp:Label>
+                                    <asp:Label ID="lbl_dish1Monday" runat="server"></asp:Label>
                                 </td>
                             </tr>
                             <tr>
                                 <td>Hauptspeise 2: </td>
                                 <td class="auto-style62">
-                                    <asp:Label ID="lbl_menu2Wendesday" runat="server"></asp:Label>
+                                    <asp:Label ID="lbl_dish2Monday" runat="server"></asp:Label>
                                 </td>
                             </tr>
                         </table>
                 </td>
                 <td class="auto-style35">5,60</td>
-                <td class="auto-style48"></td>
+                <td class="auto-style48">
+                                    <asp:Label ID="lbl_MonExchangeEndDate" runat="server"></asp:Label>
+                                </td>
                 <td class="auto-style37">
                     <asp:CheckBox ID="CheckBox_monday" runat="server" />
                 </td>
@@ -209,25 +213,27 @@
                             <tr>
                                 <td class="auto-style15">Beilage: </td>
                                 <td class="auto-style62">
-                                    <asp:Label ID="lbl_sideDishWendesday0" runat="server"></asp:Label>
+                                    <asp:Label ID="lbl_sideDishTuesday" runat="server"></asp:Label>
                                 </td>
                             </tr>
                             <tr>
                                 <td>Hauptspeise 1: </td>
                                 <td class="auto-style62">
-                                    <asp:Label ID="lbl_menu1Wendesday0" runat="server"></asp:Label>
+                                    <asp:Label ID="lbl_dish1Tuesday" runat="server"></asp:Label>
                                 </td>
                             </tr>
                             <tr>
                                 <td>Hauptspeise 2: </td>
                                 <td class="auto-style62">
-                                    <asp:Label ID="lbl_menu2Wendesday0" runat="server"></asp:Label>
+                                    <asp:Label ID="lbl_dish2Tuesday" runat="server"></asp:Label>
                                 </td>
                             </tr>
                         </table>
                 </td>
                 <td class="auto-style35">5,60</td>
-                <td class="auto-style48"></td>
+                <td class="auto-style48">
+                                    <asp:Label ID="lbl_TueExchangeEndDate" runat="server"></asp:Label>
+                                </td>
                 <td class="auto-style37">
                     <asp:CheckBox ID="CheckBox_tuesday" runat="server" />
                 </td>
@@ -241,25 +247,27 @@
                             <tr>
                                 <td class="auto-style15">Beilage: </td>
                                 <td class="auto-style62">
-                                    <asp:Label ID="lbl_sideDishWendesday1" runat="server"></asp:Label>
+                                    <asp:Label ID="lbl_sideDishWednesday" runat="server"></asp:Label>
                                 </td>
                             </tr>
                             <tr>
                                 <td>Hauptspeise 1: </td>
                                 <td class="auto-style62">
-                                    <asp:Label ID="lbl_menu1Wendesday1" runat="server"></asp:Label>
+                                    <asp:Label ID="lbl_dish1Wednesday" runat="server"></asp:Label>
                                 </td>
                             </tr>
                             <tr>
                                 <td>Hauptspeise 2: </td>
                                 <td class="auto-style62">
-                                    <asp:Label ID="lbl_menu2Wendesday1" runat="server"></asp:Label>
+                                    <asp:Label ID="lbl_dish2Wednesday" runat="server"></asp:Label>
                                 </td>
                             </tr>
                         </table>
                 </td>
                 <td class="auto-style35">5,60</td>
-                <td class="auto-style48"></td>
+                <td class="auto-style48">
+                                    <asp:Label ID="lbl_WedExchangeEndDate" runat="server"></asp:Label>
+                                </td>
                 <td class="auto-style37">
                     <asp:CheckBox ID="CheckBox_wednesday" runat="server" />
                 </td>
@@ -279,19 +287,21 @@
                             <tr>
                                 <td>Hauptspeise 1: </td>
                                 <td class="auto-style62">
-                                    <asp:Label ID="lbl_menu1Thursday" runat="server"></asp:Label>
+                                    <asp:Label ID="lbl_dish1Thursday" runat="server"></asp:Label>
                                 </td>
                             </tr>
                             <tr>
                                 <td>Hauptspeise 2: </td>
                                 <td class="auto-style62">
-                                    <asp:Label ID="lbl_menu2Thursday" runat="server"></asp:Label>
+                                    <asp:Label ID="lbl_dish2Thursday" runat="server"></asp:Label>
                                 </td>
                             </tr>
                         </table>
                 </td>
                 <td class="auto-style67">5,60</td>
-                <td class="auto-style68"></td>
+                <td class="auto-style68">
+                                    <asp:Label ID="lbl_ThuExchangeEndDate" runat="server"></asp:Label>
+                                </td>
                 <td class="auto-style69">
                     <asp:CheckBox ID="CheckBox_thursday" runat="server" />
                 </td>
@@ -303,27 +313,29 @@
                 <td class="auto-style34">
                          <table class="tableMenu">
                             <tr>
-                                <td class="auto-style15">Beilage: </td>
-                                <td class="auto-style62">
+                                <td class="auto-style71">Beilage: </td>
+                                <td class="auto-style72">
                                     <asp:Label ID="lbl_sideDishFriday" runat="server"></asp:Label>
                                 </td>
                             </tr>
                             <tr>
                                 <td>Hauptspeise 1: </td>
                                 <td class="auto-style62">
-                                    <asp:Label ID="lbl_menu1Friday" runat="server"></asp:Label>
+                                    <asp:Label ID="lbl_dish1Friday" runat="server"></asp:Label>
                                 </td>
                             </tr>
                             <tr>
                                 <td>Hauptspeise 2: </td>
                                 <td class="auto-style62">
-                                    <asp:Label ID="lbl_menu2Friday" runat="server"></asp:Label>
+                                    <asp:Label ID="lbl_dish2Friday" runat="server"></asp:Label>
                                 </td>
                             </tr>
                         </table>
                 </td>
                 <td class="auto-style35">5,60</td>
-                <td class="auto-style48"></td>
+                <td class="auto-style48">
+                                    <asp:Label ID="lbl_FriExchangeEndDate" runat="server"></asp:Label>
+                                </td>
                 <td class="auto-style37">
                     <asp:CheckBox ID="CheckBox_friday" runat="server" />
                 </td>
@@ -341,7 +353,7 @@
                     <ajaxToolkit:CalendarExtender ID="txt_datePicker_CalendarExtender" runat="server" BehaviorID="txt_datePicker_CalendarExtender" FirstDayOfWeek="Monday" TargetControlID="txt_datePicker" DaysModeTitleFormat="MMMM y" Format="yyyy-MM-dd" />
                 &nbsp;</td>
                 <td class="auto-style61">
-                    <ajaxToolkit:ComboBox ID="comboB_maindish1" runat="server" AutoCompleteMode="Suggest" DropDownStyle="DropDown" CssClass="dishBox">
+                    <ajaxToolkit:ComboBox ID="comboB_maindish1" runat="server" AutoCompleteMode="Suggest" DropDownStyle="DropDown" CssClass="dishBox"> 
                     </ajaxToolkit:ComboBox>
                 </td>
                 <td class="auto-style61">
@@ -357,7 +369,8 @@
         <br />
         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
         <br />
-        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<asp:Label ID="lbl_infoLabel" runat="server" ForeColor="#CC0000"></asp:Label>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
         <asp:Button class="Button" ID="btn_saveNewMenu" runat="server" Text="Menü speichern" BackColor="#00CC66" OnClick="btn_saveNewMenu_Click" />
         &nbsp;
         <br />
